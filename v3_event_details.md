@@ -2,39 +2,39 @@
 
 Every API method has an associated event. The following API methods log details of the associated telemetry event. 
 
-* [Start](v3_event_details/#start) - This method initializes capture of telemetric data associated to the start of user action 
+* [Start](v3_event_details.md/#start) - This method initializes capture of telemetric data associated to the start of user action 
 
-* [Impression](v3_event_details/#impression) - This method is used to capture telemetry for user visits to  a specific page. 
+* [Impression](v3_event_details.md/#impression) - This method is used to capture telemetry for user visits to  a specific page. 
 
-* [Interact](v3_event_details/#interact) - This method is used to capture user interactions on a page. For example, search, click, preview, move, resize, configure
+* [Interact](v3_event_details.md/#interact) - This method is used to capture user interactions on a page. For example, search, click, preview, move, resize, configure
 
-* [Assess ](v3_event_details/#access)- This method is used to capture user assessments that happen while playing content.
+* [Assess ](v3_event_details.md/#access)- This method is used to capture user assessments that happen while playing content.
 
-* [Response](v3_event_details/#response) - This method is used to capture user responses. For example; response to a poll, calendar event or a question.
+* [Response](v3_event_details.md/#response) - This method is used to capture user responses. For example; response to a poll, calendar event or a question.
 
-* [Interrupt](v3_event_details/#interrupt) - This method is used to capture  interrupts triggered during user activity. For example;  mobile app sent to background, call on the mobile, etc.
+* [Interrupt](v3_event_details.md/#interrupt) - This method is used to capture  interrupts triggered during user activity. For example;  mobile app sent to background, call on the mobile, etc.
 
-* [Feedback](v3_event_details/#feedback) - This method is used to capture user feedback
+* [Feedback](v3_event_details.md/#feedback) - This method is used to capture user feedback
 
-* [Share](v3_event_details/#share) - This method is used to capture everything associated with sharing. For example; Share content, telemetry data, link, file etc.
+* [Share](v3_event_details.md/#share) - This method is used to capture everything associated with sharing. For example; Share content, telemetry data, link, file etc.
 
-* [Audit](v3_event_details/#audit)
+* [Audit](v3_event_details.md/#audit)
 
-* [Error](v3_event_details/#error) - This method is used to capture when users face an error
+* [Error](v3_event_details.md/#error) - This method is used to capture when users face an error
 
-* [Heartbeat](v3_event_details/#heartbeat) - 
+* [Heartbeat](v3_event_details.md/#heartbeat) - 
 
-* [Log](v3_event_details/#log) - This method is used to capture generic logging of events.  For example; capturing logs for API calls, service calls, app updates etc.
+* [Log](v3_event_details.md/#log) - This method is used to capture generic logging of events.  For example; capturing logs for API calls, service calls, app updates etc.
 
-* [Search](v3_event_details/#search) - This method is used to capture the search state i.e. when search is triggered for content, item, assets etc.
+* [Search](v3_event_details.md/#search) - This method is used to capture the search state i.e. when search is triggered for content, item, assets etc.
 
-* [Metrics](v3_event_details/#metrics)
+* [Metrics](v3_event_details.md/#metrics)
 
-* [Summary](v3_event_details/#summary)
+* [Summary](v3_event_details.md/#summary)
 
-* [Exdata](v3_event_details/#exdata) - This method is used as a generic wrapper event to capture encrypted or serialized data
+* [Exdata](v3_event_details.md/#exdata) - This method is used as a generic wrapper event to capture encrypted or serialized data
 
-* [End](v3_event_details/#end) - This method is used to capture closure after all the activities are completed
+* [End](v3_event_details.md/#end) - This method is used to capture closure after all the activities are completed
 
 ### Start
 
