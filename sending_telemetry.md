@@ -4,7 +4,7 @@ The following are the prerequisites for sending telemetry:
 
 ### Authtoken  
 
-Authtoken is required to access any APIs. See [AuthToken generator JS](developer-docs/telemetry/authtokengenerator_jslibrary){:target="_blank"} to understand the process to generate authorization credentials.
+Authtoken is required to access any APIs. See [AuthToken generator JS](authtokengenerator_jslibrary.md) to understand the process to generate authorization credentials.
 
 ### Channel Id 
 
@@ -12,7 +12,7 @@ Authtoken is required to access any APIs. See [AuthToken generator JS](developer
 
 Sunbird implementors currently need to get a API key for accessing EkStep platform. Currently all the contents are stored here.
 
-When you are initially trying out the Sunbird, please request the keys from the EkStep QA environment. For requesting the keys see [Procedure](developer-docs/telemetry/authtokengenerator_jslibrary/#procedure){:target="_blank"} section and to follow the steps for getting secret key.  
+When you are initially trying out the Sunbird, please request the keys from the EkStep QA environment. For requesting the keys see [Procedure](authtokengenerator_jslibrary.md/#procedure) section and to follow the steps for getting secret key.  
 
 ## Telemetry Helpers
 
