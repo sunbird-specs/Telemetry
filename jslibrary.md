@@ -28,7 +28,7 @@ The following are prerequisites to use or integrate the JS library:
 
 * Device ID value
 
-**Note:** For details on how to get the device ID value, refer to [website](https://android-developers.googleblog.com/2011/03/identifying-app-installations.html){:target="_blank"}
+**Note:** For details on how to get the device ID value, refer to [website](https://android-developers.googleblog.com/2011/03/identifying-app-installations.html)
 
 ## Configure
 
@@ -244,39 +244,39 @@ To use the telemetry JS libraries, add the following to your HTML/application. T
 
 Every API method has an associated event. The following API methods log details of the associated telemetry event. 
 
-* [Start](developer-docs/telemetry/jslibrary/#start) - This method initializes capture of telemetric data associated to the start of user action 
+* [Start](jslibrary.md/#start) - This method initializes capture of telemetric data associated to the start of user action 
 
-* [Impression](developer-docs/telemetry/jslibrary/#impression) - This method is used to capture telemetry for user visits to  a specific page. 
+* [Impression](jslibrary.md/#impression) - This method is used to capture telemetry for user visits to  a specific page. 
 
-* [Interact](developer-docs/telemetry/jslibrary/#interact) - This method is used to capture user interactions on a page. For example, search, click, preview, move, resize, configure
+* [Interact](jslibrary.md/#interact) - This method is used to capture user interactions on a page. For example, search, click, preview, move, resize, configure
 
-* [Assess ](developer-docs/telemetry/jslibrary/#access)- This method is used to capture user assessments that happen while playing content.
+* [Assess ](jslibrary.md/#access)- This method is used to capture user assessments that happen while playing content.
 
-* [Response](developer-docs/telemetry/jslibrary/#response) - This method is used to capture user responses. For example; response to a poll, calendar event or a question.
+* [Response](jslibrary.md/#response) - This method is used to capture user responses. For example; response to a poll, calendar event or a question.
 
-* [Interrupt](developer-docs/telemetry/jslibrary/#interrupt) - This method is used to capture  interrupts triggered during user activity. For example;  mobile app sent to background, call on the mobile, etc.
+* [Interrupt](jslibrary.md/#interrupt) - This method is used to capture  interrupts triggered during user activity. For example;  mobile app sent to background, call on the mobile, etc.
 
-* [End](developer-docs/telemetry/jslibrary/#end) - This method is used to capture closure after all the activities are completed
+* [End](jslibrary.md/#end) - This method is used to capture closure after all the activities are completed
 
-* [Feedback](developer-docs/telemetry/jslibrary/#feedback) - This method is used to capture user feedback
+* [Feedback](jslibrary.md/#feedback) - This method is used to capture user feedback
 
-* [Share](developer-docs/telemetry/jslibrary/#share) - This method is used to capture everything associated with sharing. For example; Share content, telemetry data, link, file etc.
+* [Share](jslibrary.md/#share) - This method is used to capture everything associated with sharing. For example; Share content, telemetry data, link, file etc.
 
-* [Audit](developer-docs/telemetry//jslibrary/#audit) - This method is used when an object is changed to know previous and current state. This includes lifecycle changes as well.
+* [Audit](jslibrary.md/#audit) - This method is used when an object is changed to know previous and current state. This includes lifecycle changes as well.
 
-* [Error](developer-docs/telemetry/jslibrary/#error) - This method is used to capture when users face an error
+* [Error](jslibrary.md/#error) - This method is used to capture when users face an error
 
-* [Heartbeat](developer-docs/telemetry/jslibrary/#heartbeat) - This method is used to know is process is running or not.
+* [Heartbeat](jslibrary.md/#heartbeat) - This method is used to know is process is running or not.
 
-* [Log](developer-docs/telemetry/jslibrary/#log) - This method is used to capture generic logging of events.  For example; capturing logs for API calls, service calls, app updates etc.
+* [Log](jslibrary.md/#log) - This method is used to capture generic logging of events.  For example; capturing logs for API calls, service calls, app updates etc.
 
-* [Search](developer-docs/telemetry/jslibrary/#search) - This method is used to capture the search state i.e. when search is triggered for content, item, assets etc.
+* [Search](jslibrary.md/#search) - This method is used to capture the search state i.e. when search is triggered for content, item, assets etc.
 
-* [Metrics](developer-docs/telemetry/jslibrary/#metrics) - Service business metrics (also accessible via health API)
+* [Metrics](jslibrary.md/#metrics) - Service business metrics (also accessible via health API)
 
-* [Summary](developer-docs/telemetry/jslibrary/#summary) - Summary event
+* [Summary](jslibrary.md/#summary) - Summary event
 
-* [Exdata](developer-docs/telemetry/jslibrary/#exdata) - This method is used as a generic wrapper event to capture encrypted or serialized data
+* [Exdata](jslibrary.md/#exdata) - This method is used as a generic wrapper event to capture encrypted or serialized data
 
  
  
@@ -892,16 +892,16 @@ let data = { // Required
 
 * Introduced new context parameter in all telemetry event methods, Where user can easily update the context value for each event.  
 
-* Introduced ``` resetContext ``` method, Which is used to reset the context to new context value/global context. [More details](developer-docs/telemetry/jslibrary/#resetcontext) 
+* Introduced ``` resetContext ``` method, Which is used to reset the context to new context value/global context. [More details](jslibrary.md/#resetcontext) 
 
 * Introduced ``` resetObject ``` method, Which is used to reset the current object value.
-[More details](developer-docs/telemetry/jslibrary/#resetobject) 
+[More details](jslibrary.md/#resetobject) 
 
 * Introduced ``` resetTags ``` method, Which is used to reset the current tags value.
-[More details](developer-docs/telemetry/jslibrary/#resettags) 
+[More details](jslibrary.md/#resettags) 
 
 * Introduced ``` resetActor ``` method, Which is used to reset the current actor value.
-[More details](developer-docs/telemetry/jslibrary/#resetactor) 
+[More details](jslibrary.md/#resetactor) 
 
 * Previously if the user invokes an end event then the user must and should invoke start event to initialize the telemetry. but in the updated on no need to invoke start event because telemetry is initialized globally.
 
