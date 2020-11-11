@@ -2,39 +2,39 @@
 
 Every API method has an associated event. The following API methods log details of the associated telemetry event. 
 
-* [Start](developer-docs/telemetry/eventdetails/#start) - This method initializes capture of telemetric data associated to the start of user action 
+* [Start](v3_event_details/#start) - This method initializes capture of telemetric data associated to the start of user action 
 
-* [Impression](developer-docs/telemetry/eventdetails/#impression) - This method is used to capture telemetry for user visits to  a specific page. 
+* [Impression](v3_event_details/#impression) - This method is used to capture telemetry for user visits to  a specific page. 
 
-* [Interact](developer-docs/telemetry/eventdetails/#interact) - This method is used to capture user interactions on a page. For example, search, click, preview, move, resize, configure
+* [Interact](v3_event_details/#interact) - This method is used to capture user interactions on a page. For example, search, click, preview, move, resize, configure
 
-* [Assess ](developer-docs/telemetry/eventdetails/#access)- This method is used to capture user assessments that happen while playing content.
+* [Assess ](v3_event_details/#access)- This method is used to capture user assessments that happen while playing content.
 
-* [Response](developer-docs/telemetry/eventdetails/#response) - This method is used to capture user responses. For example; response to a poll, calendar event or a question.
+* [Response](v3_event_details/#response) - This method is used to capture user responses. For example; response to a poll, calendar event or a question.
 
-* [Interrupt](developer-docs/telemetry/eventdetails/#interrupt) - This method is used to capture  interrupts triggered during user activity. For example;  mobile app sent to background, call on the mobile, etc.
+* [Interrupt](v3_event_details/#interrupt) - This method is used to capture  interrupts triggered during user activity. For example;  mobile app sent to background, call on the mobile, etc.
 
-* [Feedback](developer-docs/telemetry/eventdetails/#feedback) - This method is used to capture user feedback
+* [Feedback](v3_event_details/#feedback) - This method is used to capture user feedback
 
-* [Share](developer-docs/telemetry/eventdetails/#share) - This method is used to capture everything associated with sharing. For example; Share content, telemetry data, link, file etc.
+* [Share](v3_event_details/#share) - This method is used to capture everything associated with sharing. For example; Share content, telemetry data, link, file etc.
 
-* [Audit](developer-docs/telemetry/eventdetails/#audit)
+* [Audit](v3_event_details/#audit)
 
-* [Error](developer-docs/telemetry/eventdetails/#error) - This method is used to capture when users face an error
+* [Error](v3_event_details/#error) - This method is used to capture when users face an error
 
-* [Heartbeat](developer-docs/telemetry/eventdetails/#heartbeat) - 
+* [Heartbeat](v3_event_details/#heartbeat) - 
 
-* [Log](developer-docs/telemetry/eventdetails/#log) - This method is used to capture generic logging of events.  For example; capturing logs for API calls, service calls, app updates etc.
+* [Log](v3_event_details/#log) - This method is used to capture generic logging of events.  For example; capturing logs for API calls, service calls, app updates etc.
 
-* [Search](developer-docs/telemetry/eventdetails/#search) - This method is used to capture the search state i.e. when search is triggered for content, item, assets etc.
+* [Search](v3_event_details/#search) - This method is used to capture the search state i.e. when search is triggered for content, item, assets etc.
 
-* [Metrics](developer-docs/telemetry/eventdetails/#metrics)
+* [Metrics](v3_event_details/#metrics)
 
-* [Summary](developer-docs/telemetry/eventdetails/#summary)
+* [Summary](v3_event_details/#summary)
 
-* [Exdata](developer-docs/telemetry/eventdetails/#exdata) - This method is used as a generic wrapper event to capture encrypted or serialized data
+* [Exdata](v3_event_details/#exdata) - This method is used as a generic wrapper event to capture encrypted or serialized data
 
-* [End](developer-docs/telemetry/eventdetails/#end) - This method is used to capture closure after all the activities are completed
+* [End](v3_event_details/#end) - This method is used to capture closure after all the activities are completed
 
 ### Start
 
