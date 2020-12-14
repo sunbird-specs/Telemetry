@@ -5,7 +5,7 @@ All events follow a common data structure, though the event data structure (“e
 <pre>
 {
  // About the event
- "eid": , // Required. TODO: Shall we rename it to "verb" ?? 
+ "eid": , // Required. ID of the event
  "ets": , // Required. Epoch timestamp of event (time in milli-seconds. For ex: 1442816723)
  "ver": , // Required. Version of the event data structure, currently "3.0"
  "mid": , // Required. Unique message ID. Used for deduplication, replay and update indexes
