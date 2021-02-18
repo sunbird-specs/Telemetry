@@ -414,6 +414,10 @@ data - Object - Required
         "env": String, // env of page
         "timespent": Double, // Time taken per page
         "visits": Long // Number of times each page was visited
+    }],
+    "extra": [{ // Optional. Additional summary data specific to mime type or app. For ex: wordsPerMin
+       "id": "", // Required. Key for the extra data
+       "value": "" // Required. Value for the extra data
     }]
   }
 }
