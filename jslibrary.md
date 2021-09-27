@@ -1,30 +1,26 @@
-## Need 
+# jslibrary
 
-The purpose of a standalone JS library for telemetry is to facilitate capture and distribution of telemetry data by users who would like to use their own apps, content players or portals.  
+## Need
+
+The purpose of a standalone JS library for telemetry is to facilitate capture and distribution of telemetry data by users who would like to use their own apps, content players or portals.
 
 We chose to use a JS library for the following reasons:
 
-* All the telemetry events that are generated and synced to the server have the same format (field data types and time zone value)
-
+* All the telemetry events that are generated and synced to the server have the same format \(field data types and time zone value\)
 * It is easy to upgrade to new versions, in case of major changes in telemetry
-
 * There is effortless backward compatibility, as changes are handled within the telemetry library. Any upgrade of the telemetry library does not require code changes in the content
-
 * There are reduced number of API calls
-
 * There are simple API methods to generate the complete telemetry event as only the required fields are passed
 
-## Prerequisites 
+## Prerequisites
 
 The following are prerequisites to use or integrate the JS library:
 
-* JQuery library should be available 
-
+* JQuery library should be available
 * Valid Authtoken and Key to make API calls
+* The [telemetry.min.js](https://github.com/project-sunbird/project-sunbird.github.io/blob/dev/pages/developer-docs/telemetry/other_files/telemetry.min.js){:target="\_blank"} file
 
-* The [telemetry.min.js](https://github.com/project-sunbird/project-sunbird.github.io/blob/dev/pages/developer-docs/telemetry/other_files/telemetry.min.js){:target="_blank"} file
-
-**Note:** For details on generating and using the Authtoken and Key, refer to the section 
+**Note:** For details on generating and using the Authtoken and Key, refer to the section
 
 * Device ID value
 
@@ -34,133 +30,98 @@ The following are prerequisites to use or integrate the JS library:
 
 This JS library helps to generate telemetry events. These events sync to the server or data-pipeline in a batch as defined in the configuration. To log telemetry events, the user has to call the start method by passing the configuration along with other parameters.
 
-**Note:** All telemetry events sync only to the server or data-pipeline, when connected to the Internet.  
+**Note:** All telemetry events sync only to the server or data-pipeline, when connected to the Internet.
 
 Telemetry events are generated based on the configuration of the telemetry library.
 
-**Required Configuration (Context)**
+**Required Configuration \(Context\)**
 
 <table>
-  
   <thead>
-  <tr>
-    <th>Property</th>
-    <th>Description</th>
-    <th>Required</th>
-    <th>Default Value</th>
-  </tr>
+    <tr>
+      <th style="text-align:left">Property</th>
+      <th style="text-align:left">Description</th>
+      <th style="text-align:left">Required</th>
+      <th style="text-align:left">Default Value</th>
+    </tr>
   </thead>
   <tbody>
-  <tr>
-    <td>pdata</td>
-    <td>Producer data. It is an object containing id, version and pid.</td>
-    <td>true</td>
-    <td>Defaults to genie ex : {"id": "genie", "ver": "6.5.2567" pid:""}</td>
-  </tr>
-  <tr>
-    <td>channel</td>
-    <td>It is an string containing unique channel name.</td>
-    <td>true</td>
-    <td>Defaults to in.ekstep</td>
-  </tr>
-  <tr>
-    <td>uid</td>
-    <td>It is an string containing user id.</td>
-    <td>true</td>
-    <td>defaults to "anonymous"</td>
-  </tr>
-  <tr>
-    <td>did</td>
-    <td>It is an string containing unique device id. 
-      <ul><li>To generate did value for android refer to <a href ='https://android-developers.googleblog.com/2011/03/identifying-app-installations.html'>here</a> ANDROID_ID is generally used for mobiles</li>
-        <li>To generate did value for web client refer <a href = 'https://github.com/Valve/fingerprintjs2'>here</a>. If consumer is not sending any did value then by default library will generate did using <a href ='https://github.com/Valve/fingerprintjs2'>fingerPrintJs2</a>.</li><li>For server side it's mandtory to pass did value</li></ul>
-   </td>
-    <td>true</td>
-    <td>Default to <a href="https://github.com/Valve/fingerprintjs2">fingerPrintjs2</a>(Note: Only for web client)</td>
-  </tr>
-  <tr>
-    <td>authtoken</td>
-    <td>It is an string containing consumer token to access the API</td>
-    <td>true</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Property</td>
-    <td>Description</td>
-    <td>Required</td>
-    <td>Default Value</td>
-  </tr>
-  <tr>
-    <td>env</td>
-    <td>It is an string containing Unique environment where the event has occurred</td>
-    <td>true</td>
-    <td>defaults to "ContentPlayer"</td>
-  </tr>
+    <tr>
+      <td style="text-align:left">pdata</td>
+      <td style="text-align:left">Producer data. It is an object containing id, version and pid.</td>
+      <td
+      style="text-align:left">true</td>
+        <td style="text-align:left">Defaults to genie ex : {&quot;id&quot;: &quot;genie&quot;, &quot;ver&quot;:
+          &quot;6.5.2567&quot; pid:&quot;&quot;}</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">channel</td>
+      <td style="text-align:left">It is an string containing unique channel name.</td>
+      <td style="text-align:left">true</td>
+      <td style="text-align:left">Defaults to in.ekstep</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">uid</td>
+      <td style="text-align:left">It is an string containing user id.</td>
+      <td style="text-align:left">true</td>
+      <td style="text-align:left">defaults to &quot;anonymous&quot;</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">did</td>
+      <td style="text-align:left">
+        <p>It is an string containing unique device id.</p>
+        <ul>
+          <li>To generate did value for android refer to <a href="https://android-developers.googleblog.com/2011/03/identifying-app-installations.html">here</a> ANDROID_ID
+            is generally used for mobiles</li>
+          <li>To generate did value for web client refer <a href="https://github.com/Valve/fingerprintjs2">here</a>.
+            If consumer is not sending any did value then by default library will generate
+            did using <a href="https://github.com/Valve/fingerprintjs2">fingerPrintJs2</a>.</li>
+          <li>For server side it&apos;s mandtory to pass did value</li>
+        </ul>
+      </td>
+      <td style="text-align:left">true</td>
+      <td style="text-align:left">Default to <a href="https://github.com/Valve/fingerprintjs2">fingerPrintjs2</a>(Note:
+        Only for web client)</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">authtoken</td>
+      <td style="text-align:left">It is an string containing consumer token to access the API</td>
+      <td style="text-align:left">true</td>
+      <td style="text-align:left"></td>
+    </tr>
+    <tr>
+      <td style="text-align:left">Property</td>
+      <td style="text-align:left">Description</td>
+      <td style="text-align:left">Required</td>
+      <td style="text-align:left">Default Value</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">env</td>
+      <td style="text-align:left">It is an string containing Unique environment where the event has occurred</td>
+      <td
+      style="text-align:left">true</td>
+        <td style="text-align:left">defaults to &quot;ContentPlayer&quot;</td>
+    </tr>
   </tbody>
 </table>
 
 **Additional Configuration**
 
-<table>
-  <tr>
-    <td>Property</td>
-    <td>Description</td>
-    <td>Required</td>
-    <td>Default Value</td>
-  </tr>
-  <tr>
-    <td>sid</td>
-    <td>It is an string containing user session id.</td>
-    <td>optional</td>
-    <td> </td>
-  </tr>
-  <tr>
-    <td>batchsize</td>
-    <td>It is an int containing number of events count to sync at a time. Can be configured from min value 10 to max value 1000.</td>
-    <td>optional</td>
-    <td>defaults to 20</td>
-  </tr>
-  <tr>
-    <td>mode</td>
-    <td>It is an string which defines to identify preview used by the user to play/edit/preview.</td>
-    <td>optional</td>
-    <td>defaults to "play"</td>
-  </tr>
-  <tr>
-    <td>host</td>
-    <td>It is an string containing API endpoint host.</td>
-    <td>optional</td>
-    <td>defaults to "https://api.ekstep.in"</td>
-  </tr>
-  <tr>
-    <td>endpoint</td>
-    <td>It is an string containing API endpoint. Please don't change default value. Update this only when the data is proxied</td>
-    <td>optional</td>
-    <td>Defaults to "/v3/telemetry"</td>
-  </tr>
-  <tr>
-    <td>tags</td>
-    <td>It is an array. It can be used to tag devices so that summaries/metrics can be derived via specific tags. Helpful during analysis</td>
-    <td>optional</td>
-    <td>Defaults to []</td>
-  </tr>
-  <tr>
-    <td>cdata</td>
-    <td>It is an array. Correlation data. Can be used to correlate multiple events. Generally used to track user flow</td>
-    <td>optional</td>
-    <td>Defaults to []</td>
-  </tr>
-  <tr>
-    <td>dispatcher</td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-</table>
+| Property | Description | Required | Default Value |
+| :--- | :--- | :--- | :--- |
+| sid | It is an string containing user session id. | optional |  |
+| batchsize | It is an int containing number of events count to sync at a time. Can be configured from min value 10 to max value 1000. | optional | defaults to 20 |
+| mode | It is an string which defines to identify preview used by the user to play/edit/preview. | optional | defaults to "play" |
+| host | It is an string containing API endpoint host. | optional | defaults to "https://api.ekstep.in" |
+| endpoint | It is an string containing API endpoint. Please don't change default value. Update this only when the data is proxied | optional | Defaults to "/v3/telemetry" |
+| tags | It is an array. It can be used to tag devices so that summaries/metrics can be derived via specific tags. Helpful during analysis | optional | Defaults to \[\] |
+| cdata | It is an array. Correlation data. Can be used to correlate multiple events. Generally used to track user flow | optional | Defaults to \[\] |
+| dispatcher |  |  |  |
 
 **Sample:**
 
-<pre>
+```text
+
 {
   "pdata": {
     "id": "genie",
@@ -181,48 +142,51 @@ Telemetry events are generated based on the configuration of the telemetry libra
   "tags": [],
   "cdata": []
 }
-</pre>
+```
 
 **Dispatcher:**
 
 User can define custom dispatcher to override the default functionality of telemetry sync. By default telemetry events will send to default server/host. User can override this default functionality by defining his own "dispatcher" object to handle telemetry events.
 
-<pre>
+```text
+
 var customDispatcher = {
     dispatch: function(event){
         // User defined logic to send telemetry to server or store locally etc..
     }
 };
-</pre>
+```
 
-Send this object as dispatcher in the above sample configuration ("dispatcher":customDispatcher).
+Send this object as dispatcher in the above sample configuration \("dispatcher":customDispatcher\).
 
 ## How to use telemetry JS library
 
-Download the telemetry-sdk npm module from [here](https://www.npmjs.com/package/@project-sunbird/telemetry-sdk) 
+Download the telemetry-sdk npm module from [here](https://www.npmjs.com/package/@project-sunbird/telemetry-sdk)
 
-<pre>
+```text
+
 npm i @project-sunbird/telemetry-sdk
-</pre>
+```
 
 **Example:**
 
-<pre>
+```text
+
 $t = require('@project-sunbird/telemetry-sdk');   
 $t.start(config, contentId, contentVer,data, options);
-</pre>
-   
+```
 
 To use the telemetry JS libraries, add the following to your HTML/application. The file path is a relative path, for example; assets/js to the associated files within the html content.
 
-<pre>
-&#x3C;!-- External Libraries --&#x3E;
-  &#x3C;script src=&#x22;[relative_path]/jquery.min.js&#x22;&#x3E;&#x3C;/script&#x3E;
-  
-  &#x3C;!-- Telemetry JS library --&#x3E;
-  &#x3C;script src=&#x22;[relative_path]/telemetry.min.js&#x22;&#x3E;&#x3C;/script&#x3E;
-  &#x3C;script src=&#x22;[relative_path]/auth-token-generator.min.js&#x22;&#x3E;&#x3C;/script&#x3E;
-  &#x3C;script&#x3E;
+```text
+
+<!-- External Libraries -->
+  <script src="[relative_path]/jquery.min.js"></script>
+
+  <!-- Telemetry JS library -->
+  <script src="[relative_path]/telemetry.min.js"></script>
+  <script src="[relative_path]/auth-token-generator.min.js"></script>
+  <script>
     function init() {
           // Generate auth token
           // Key: Partner generated key
@@ -231,67 +195,47 @@ To use the telemetry JS libraries, add the following to your HTML/application. T
           config.authToken = token;
           let startEdata = {};
           let options = {};
-          $t.start(config, &#x22;content_id, &#x22;contetn_ver&#x22;, startEdata, options );
+          $t.start(config, "content_id, "contetn_ver", startEdata, options );
       }
   init()
-  &#x3C;/script&#x3E;
-</pre>
-
-
-
+  </script>
+```
 
 ## Telemetry API methods
 
-Every API method has an associated event. The following API methods log details of the associated telemetry event. 
+Every API method has an associated event. The following API methods log details of the associated telemetry event.
 
-* [Start](jslibrary.md/#start) - This method initializes capture of telemetric data associated to the start of user action 
-
-* [Impression](jslibrary.md/#impression) - This method is used to capture telemetry for user visits to  a specific page. 
-
-* [Interact](jslibrary.md/#interact) - This method is used to capture user interactions on a page. For example, search, click, preview, move, resize, configure
-
-* [Assess ](jslibrary.md/#access)- This method is used to capture user assessments that happen while playing content.
-
-* [Response](jslibrary.md/#response) - This method is used to capture user responses. For example; response to a poll, calendar event or a question.
-
-* [Interrupt](jslibrary.md/#interrupt) - This method is used to capture  interrupts triggered during user activity. For example;  mobile app sent to background, call on the mobile, etc.
-
-* [End](jslibrary.md/#end) - This method is used to capture closure after all the activities are completed
-
-* [Feedback](jslibrary.md/#feedback) - This method is used to capture user feedback
-
-* [Share](jslibrary.md/#share) - This method is used to capture everything associated with sharing. For example; Share content, telemetry data, link, file etc.
-
-* [Audit](jslibrary.md/#audit) - This method is used when an object is changed to know previous and current state. This includes lifecycle changes as well.
-
-* [Error](jslibrary.md/#error) - This method is used to capture when users face an error
-
-* [Heartbeat](jslibrary.md/#heartbeat) - This method is used to know is process is running or not.
-
-* [Log](jslibrary.md/#log) - This method is used to capture generic logging of events.  For example; capturing logs for API calls, service calls, app updates etc.
-
-* [Search](jslibrary.md/#search) - This method is used to capture the search state i.e. when search is triggered for content, item, assets etc.
-
-* [Metrics](jslibrary.md/#metrics) - Service business metrics (also accessible via health API)
-
-* [Summary](jslibrary.md/#summary) - Summary event
-
-* [Exdata](jslibrary.md/#exdata) - This method is used as a generic wrapper event to capture encrypted or serialized data
-
- 
- 
+* [Start](jslibrary.md#start) - This method initializes capture of telemetric data associated to the start of user action
+* [Impression](jslibrary.md#impression) - This method is used to capture telemetry for user visits to a specific page.
+* [Interact](jslibrary.md#interact) - This method is used to capture user interactions on a page. For example, search, click, preview, move, resize, configure
+* [Assess ](jslibrary.md#access)- This method is used to capture user assessments that happen while playing content.
+* [Response](jslibrary.md#response) - This method is used to capture user responses. For example; response to a poll, calendar event or a question.
+* [Interrupt](jslibrary.md#interrupt) - This method is used to capture interrupts triggered during user activity. For example; mobile app sent to background, call on the mobile, etc.
+* [End](jslibrary.md#end) - This method is used to capture closure after all the activities are completed
+* [Feedback](jslibrary.md#feedback) - This method is used to capture user feedback
+* [Share](jslibrary.md#share) - This method is used to capture everything associated with sharing. For example; Share content, telemetry data, link, file etc.
+* [Audit](jslibrary.md#audit) - This method is used when an object is changed to know previous and current state. This includes lifecycle changes as well.
+* [Error](jslibrary.md#error) - This method is used to capture when users face an error
+* [Heartbeat](jslibrary.md#heartbeat) - This method is used to know is process is running or not.
+* [Log](jslibrary.md#log) - This method is used to capture generic logging of events. For example; capturing logs for API calls, service calls, app updates etc.
+* [Search](jslibrary.md#search) - This method is used to capture the search state i.e. when search is triggered for content, item, assets etc.
+* [Metrics](jslibrary.md#metrics) - Service business metrics \(also accessible via health API\)
+* [Summary](jslibrary.md#summary) - Summary event
+* [Exdata](jslibrary.md#exdata) - This method is used as a generic wrapper event to capture encrypted or serialized data
 
 ### Start
 
-This API is used to log telemetry when users view content or initiate game play 
+This API is used to log telemetry when users view content or initiate game play
 
-<pre>
+```text
+
 start: function(config, contentId, contentVer, data, options) { }
-</pre>
+```
 
 Request Arguments:
 
-<pre>
+```text
+
 let config = Object; // Telemetry Configurations
 let contentId = String; //Required. Id of the content
 let contentVer = String; //Required. Version of the content. Defaults to "1.0"
@@ -308,19 +252,21 @@ let options = { // Optional
     runningEnv: "server" // It can be either client or server
 };
 
-</pre>
+```
 
 ### Impression
 
 This API is used to log telemetry when users visit a specific page.
 
-<pre>
+```text
+
 impression: function(data, options) { }
-</pre>
+```
 
 Request Arguments:
 
-<pre>
+```text
+
 
 let data = { // Required
     "type": String, //Required. Impression type (list, detail, view, edit, workflow, search)
@@ -329,9 +275,10 @@ let data = { // Required
     "itype": "", // type of interaction - SWIPE, SCRUB (fast forward using page thumbnails) or AUTO
     "stageto": "" // game level, stage of page id to which the navigation was done
 };
-</pre>
+```
 
-<pre>
+```text
+
 let options = { // Optional
     context: {}, // To override the existing context
     object: {}, // To override the existing object
@@ -339,20 +286,21 @@ let options = { // Optional
     tags: {}, // To override the existing tags
     runningEnv: "server" // It can be either client or server
 };
-</pre>  
-
+```
 
 ### Interact
 
 This API is used to log telemetry of user interactions on the page. For example, search, click, preview, move, resize, configure
 
-<pre>
+```text
+
 interact: function(data, options) { }
-</pre>
+```
 
 Request Arguments:
 
-<pre>
+```text
+
 
 let data = { // Required
     "type": "", // Required. Type of interaction TOUCH,DRAG,DROP,PINCH,ZOOM,SHAKE,ROTATE,SPEAK,LISTEN,WRITE,DRAW,START,ENDCHOOSE,ACTIVATE,SHOW,HIDE,SCROLL,HEARTBEAT,OTHER
@@ -366,8 +314,10 @@ let data = { // Required
         "uri": "" // Unique external resource identifier if any (for recorded voice, image, etc.)
     }
 };
-</pre>
-<pre>
+```
+
+```text
+
 let options = { // Optional
     context: {}, // To override the existing context
     object: {}, // To override the existing object
@@ -375,19 +325,21 @@ let options = { // Optional
     tags: {}, // To override the existing tags
     runningEnv: "server" // It can be either client or server
 }; 
-</pre>  
+```
 
 ### Assess
 
 This API is used to log telemetry of assessments that have occured when the user is viewing content
 
-<pre>
+```text
+
 assess: function(data, options) { }
-</pre>
+```
 
 Request Arguments:
 
-<pre>
+```text
+
 let QUESTION = {
     "id": "", // unique assessment question id. its an required property.
     "maxscore", // user defined score to this assessment/question.
@@ -409,8 +361,10 @@ let data = { //Required
     "resvalues": [{ "id": "value" }], // Required. Array of key-value pairs that represent child answer (result of this assessment)
     "duration": "" // Required. time taken (decimal number) for this assessment in seconds
 };
-</pre>
-<pre>
+```
+
+```text
+
  let options = { //Optional
     context: {}, // To override the existing context
     object: {}, // To override the existing object
@@ -418,19 +372,21 @@ let data = { //Required
     tags: {}, // To override the existing tags
     runningEnv: "server" // It can be either client or server
 };
-</pre>
+```
 
 ### Response
 
 This API is used to log telemetry of user response. For example; Responded to assessments.
 
-<pre>
+```text
+
 response: function(data, options) { }
-</pre>
+```
 
 Request Arguments:
 
-<pre>
+```text
+
 let TARGET = {
     "id": "", // Required. unique id for the target
     "ver": "", // Required. version of the target
@@ -447,8 +403,10 @@ let data = { // Required
     "type": "", // Required. Type of response. CHOOSE, DRAG, SELECT, MATCH, INPUT, SPEAK, WRITE
     "values": [{ "key": "value" }] // Required. Array of response tuples. For ex: if lhs option1 is matched with rhs optionN - [{"lhs":"option1"}, {"rhs":"optionN"}]
 };
-</pre>
-<pre>
+```
+
+```text
+
 let options = { // Optional
     context: {}, // To override the existing context
     object: {}, // To override the existing object
@@ -456,27 +414,30 @@ let options = { // Optional
     tags: {}, // To override the existing tags
     runningEnv: "server" // It can be either client or server
 };
-</pre>
+```
 
 ### Interrupt
 
 This API is used to log telemetry for any interruptions that have occurred when a user is viewing content or playing games. For example; screen lock, incoming call, etc.
 
-<pre>
+```text
+
 interrupt: function(data, options) { }
-</pre>
+```
 
 Request Arguments:
 
-<pre>
+```text
+
 let data = { //Required
     "type": "", // Required. Type of interuption
     "pageid": "", // Optional. Current Stage/Page unique id on which interuption occured
     "eventid": "" // Optional. unique event ID
 };
-</pre>
-  
-<pre>
+```
+
+```text
+
  let options = { // Optional
     context: {}, // To override the existing context
     object: {}, // To override the existing object
@@ -484,30 +445,31 @@ let data = { //Required
     tags: {}, // To override the existing tags
     runningEnv: "server" // It can be either client or server
 };
-</pre>
-
-
+```
 
 ### Feedback
 
 This API is used to log telemetry of feedback provided by the user.
 
-<pre>
+```text
+
 // To log content start/play event
 feedback: function(data, options) { }
-</pre>
+```
 
 Request Arguments:
 
-<pre>
+```text
+
 let data = { // Required
     "contentId": "", // Required. Id of the content
     "rating": 3, // Optional. Numeric score (+1 for like, -1 for dislike, or 4.5 stars given in a rating)
     "comments": "User entered feedback" // Optional. Text feedback (if any)
 };
-</pre>
+```
 
-<pre>
+```text
+
 let options = { // Optional
     context: {}, // To override the existing context
     object: {}, // To override the existing object
@@ -515,20 +477,22 @@ let options = { // Optional
     tags: {}, // To override the existing tags
     runningEnv: "server" // It can be either client or server
 };
-</pre>
+```
 
 ### Share
 
 This API is used to log telemetry when a user shares any content with other users.
 
-<pre>
+```text
+
 // To log content start/play event
 share: function(data, options) { }
-</pre>
+```
 
 Request Arguments:
 
-<pre>
+```text
+
 let data = { // Required
     "dir": "", // In/Out
     "type": "", // File/Link/Message
@@ -551,8 +515,10 @@ let data = { // Required
         }
     }]
 };
-</pre>
-<pre>
+```
+
+```text
+
  let options = { // Optional
     context: {}, // To override the existing context
     object: {}, // To override the existing object
@@ -561,19 +527,21 @@ let data = { // Required
     runningEnv: "server" // It can be either client or server
 };
 
-</pre>
+```
 
 ### Audit
 
 This API is used to log telemetry when an object is changed. This includes life-cycle changes as well.
 
-<pre>
+```text
+
 audit: function(data, options) { }
-</pre>
+```
 
 Request Arguments:
 
-<pre>
+```text
+
 let data = { // Required
     "edata": {
         "props": [""], // Updated properties
@@ -581,8 +549,10 @@ let data = { // Required
         "prevstate": "" // Optional. Previous state
     }
 };
-</pre>
-<pre>
+```
+
+```text
+
   let options = { // Optional
     context: {}, // To override the existing context
     object: {}, // To override the existing object
@@ -590,27 +560,30 @@ let data = { // Required
     tags: {}, // To override the existing tags
     runningEnv: "server" // It can be either client or server
 };
-</pre>
+```
 
 ### Error
 
-This API is used to log telemetry of any error that has occurred when a user is viewing content or playing games. 
+This API is used to log telemetry of any error that has occurred when a user is viewing content or playing games.
 
-<pre>
+```text
+
 error: function(error, options) { }
-</pre>
+```
 
 Request Arguments:
 
-<pre>
+```text
+
 let error = { // Required
     "err": "", // Required. Error code
     "errtype": "", // Required. Error type classification - "SYSTEM", "MOBILEAPP", "CONTENT"
     "stacktrace": "", // Required. Detailed error data/stack trace
 };
-</pre>
+```
 
-<pre>
+```text
+
  let options = { // Optional
     context: {}, // To override the existing context
     object: {}, // To override the existing object
@@ -618,25 +591,28 @@ let error = { // Required
     tags: {}, // To override the existing tags
     runningEnv: "server" // It can be either client or server
 };
-</pre>
+```
 
 ### Heartbeat
 
 This API is used to log telemetry for heartbeat event to denote that the process is running.
 
-<pre>
+```text
+
 heartbeat: function(data, options) { }
-</pre>
+```
 
 Request Arguments:
 
-<pre>
+```text
+
 let data = { // Required
     "edata": {}
 }
-</pre>
+```
 
-<pre>
+```text
+
  let options = { // Optional
     context: {}, // To override the existing context
     object: {}, // To override the existing object
@@ -645,28 +621,31 @@ let data = { // Required
     runningEnv: "server" // It can be either client or server
 };
 
-</pre>
+```
 
 ### Log
 
 This API is used to log telemetry of generic log events. For example; API calls, service calls, app updates, etc.
 
-<pre>
+```text
+
 log: function(data, options) { }
-</pre>
+```
 
 Request Arguments:
 
-<pre>
+```text
+
 let data = { // Required
     "type": "", // Required. Type of log (system, process, api_access, api_call, job, app_update etc)
     "level": "", // Required. Level of the log. TRACE, DEBUG, INFO, WARN, ERROR, FATAL
     "message": "", // Required. Log message
     "params": [{ "key": "value" }] // Optional. Additional params in the log message
 };
-</pre>
+```
 
-<pre>
+```text
+
 let options = { // Optional
     context: {}, // To override the existing context
     object: {}, // To override the existing object
@@ -674,19 +653,21 @@ let options = { // Optional
     tags: {}, // To override the existing tags
     runningEnv: "server" // It can be either client or server
 };
-</pre>
+```
 
 ### Search
 
-This API is used to log telemetry when a user triggers a search for any content, item or asset 
+This API is used to log telemetry when a user triggers a search for any content, item or asset
 
-<pre>
+```text
+
 search: function(data, options) { }
-</pre>
+```
 
 Request Arguments:
 
-<pre>
+```text
+
 let data = { // Required
     "type": "", // Required. content, assessment, asset 
     "query": "", // Required. Search query string 
@@ -696,8 +677,10 @@ let data = { // Required
     "size": 333, // Required. Number of search results
     "topn": [{}] // Required. top N (configurable) results with their score
 };
-</pre>
-<pre>
+```
+
+```text
+
 let options = { // Optional
     context: {}, // To override the existing context
     object: {}, // To override the existing object
@@ -705,19 +688,21 @@ let options = { // Optional
     tags: {}, // To override the existing tags
     runningEnv: "server" // It can be either client or server
 }; 
-</pre>
+```
 
 ### Metrics
 
-This API is used to log telemetry for service business metrics (also accessible via health API).
+This API is used to log telemetry for service business metrics \(also accessible via health API\).
 
-<pre>
+```text
+
 metrics: function(data, options) { }
-</pre>
+```
 
 Request Arguments:
 
-<pre>
+```text
+
 let data = { // Required
     "edata": {
         "metric1": Int,
@@ -725,9 +710,10 @@ let data = { // Required
             /// more metrics, each is a key value
     }
 };
-</pre>
+```
 
-<pre>
+```text
+
  let options = { // Optional
     context: {}, // To override the existing context
     object: {}, // To override the existing object
@@ -735,19 +721,21 @@ let data = { // Required
     tags: {}, // To override the existing tags
     runningEnv: "server" // It can be either client or server
 };
-</pre>
+```
 
 ### Summary
 
 This API is used to log telemetry summary event
 
-<pre>
+```text
+
 summary: function(data, options) { }
-</pre>
+```
 
 Request Arguments:
 
-<pre>
+```text
+
 let data = { // Required
     "edata": {
         "type": "", // Required. Type of summary. Free text. "session", "app", "tool" etc
@@ -775,9 +763,10 @@ let data = { // Required
         }]
     }
 };
-</pre>
+```
 
-<pre>
+```text
+
   let options = { // Optional
     context: {}, // To override the existing context
     object: {}, // To override the existing object
@@ -785,27 +774,30 @@ let data = { // Required
     tags: {}, // To override the existing tags
     runningEnv: "server" // It can be either client or server
 };
-</pre>
+```
 
 ### Exdata
 
 This API is used to log telemetry for external data, while playing content
 
-<pre>
+```text
+
 exdata: function(data, options) { }
-</pre>
+```
 
 Request Arguments:
 
-<pre>
+```text
+
 let data = {
     "type":"" - Free flowing text.For ex: partnerdata,xapi etc
    ....Serialized data(can be either encrypted / encoded / stringified)
 
 };
-</pre>
+```
 
-<pre>
+```text
+
   let options = { // Optional
     context: {}, // To override the existing context
     object: {}, // To override the existing object
@@ -813,19 +805,21 @@ let data = {
     tags: {}, // To override the existing tags
     runningEnv: "server" // It can be either client or server
 };
-</pre>
+```
 
 ### End
 
 This API is used to log telemetry while the user is closing or exiting the content or game
 
-<pre>
+```text
+
 end: function(data, options) { }
-</pre>
+```
 
 Request Arguments:
 
-<pre>
+```text
+
 let data = { // Required
     "contentId": "", // Required. Id of the content
     "type": "", // Required. app, session, editor, player, workflow, assessment
@@ -833,9 +827,10 @@ let data = { // Required
     "pageid": "", // Optional. Page/Stage id where the end has happened.
     "summary": [{ "key": "value" }] // Optional. Summary of actions done between start and end. For ex: "progress" for player session, "nodesModified" for collection editor
 };
-</pre>
+```
 
-<pre>
+```text
+
   let options = { // Optional
     context: {}, // To override the existing context
     object: {}, // To override the existing object
@@ -843,69 +838,60 @@ let data = { // Required
     tags: {}, // To override the existing tags
     runningEnv: "server" // It can be either client or server
 };
-</pre>
-
+```
 
 ### ResetContext
-  This is used to reset the current context value with new context object.
 
-<pre>
+This is used to reset the current context value with new context object.
+
+```text
+
  @param {context} Object    - If context is undefined then library is reset to previous event context value.
  $t.resetContext(context) 
-</pre>
+```
 
 ### ResetObject
- Which is used reset the current object value with new obj
 
-<pre>
+Which is used reset the current object value with new obj
+
+```text
+
  @param {obj} Object      - If the Object is undefined then library is reset to previous event object value.
  $t.resetObject(obj) 
-</pre>
+```
 
 ### ResetActor
-  Which is used reset the current actor value with new actor   
 
-<pre>
+Which is used reset the current actor value with new actor
+
+```text
+
  @param {actor} Object    - If the actor is undefined then library is reset to previous event actor value.
  $t.resetActor(actor) 
-</pre>
+```
 
 ### ResetTags
-  Which is used to reset the current tag's value with new tag's
 
-<pre>
+Which is used to reset the current tag's value with new tag's
+
+```text
+
  @param {tags} Array      - If tags are undefined then library is reset to previous event tags value.
  $t.resetTags(tags) 
-</pre>
-
-
+```
 
 ## ChangeLog
 
-  **Jan 2018**
+**Jan 2018**
 
 * For the `start` event, Changed the both `contentId` and `contentVer` to an optional parameters from mandtory.
- 
 * Decoupling of the both init and start methods.
-
-* Introduced new initialize method, Where user can initialize the telemetry without calling ``` start ``` event. [More details](#initialize)
-
-* Introduced new context parameter in all telemetry event methods, Where user can easily update the context value for each event.  
-
-* Introduced ``` resetContext ``` method, Which is used to reset the context to new context value/global context. [More details](jslibrary.md/#resetcontext) 
-
-* Introduced ``` resetObject ``` method, Which is used to reset the current object value.
-[More details](jslibrary.md/#resetobject) 
-
-* Introduced ``` resetTags ``` method, Which is used to reset the current tags value.
-[More details](jslibrary.md/#resettags) 
-
-* Introduced ``` resetActor ``` method, Which is used to reset the current actor value.
-[More details](jslibrary.md/#resetactor) 
-
+* Introduced new initialize method, Where user can initialize the telemetry without calling `start` event. [More details](jslibrary.md#initialize)
+* Introduced new context parameter in all telemetry event methods, Where user can easily update the context value for each event.
+* Introduced `resetContext` method, Which is used to reset the context to new context value/global context. [More details](jslibrary.md#resetcontext)
+* Introduced `resetObject` method, Which is used to reset the current object value. [More details](jslibrary.md#resetobject)
+* Introduced `resetTags` method, Which is used to reset the current tags value. [More details](jslibrary.md#resettags)
+* Introduced `resetActor` method, Which is used to reset the current actor value. [More details](jslibrary.md#resetactor)
 * Previously if the user invokes an end event then the user must and should invoke start event to initialize the telemetry. but in the updated on no need to invoke start event because telemetry is initialized globally.
-
 * Bug fixes
 
-  
-  

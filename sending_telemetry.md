@@ -1,22 +1,24 @@
+# sending\_telemetry
+
 ## Prerequisites
 
 The following are the prerequisites for sending telemetry:
 
-### Authtoken  
+### Authtoken
 
 Authtoken is required to access any APIs. See [AuthToken generator JS](authtokengenerator_jslibrary.md) to understand the process to generate authorization credentials.
 
-### Channel Id 
+### Channel Id
 
 ### API key
 
 Sunbird implementors currently need to get a API key for accessing EkStep platform. Currently all the contents are stored here.
 
-When you are initially trying out the Sunbird, please request the keys from the EkStep QA environment. For requesting the keys see [Procedure](authtokengenerator_jslibrary.md/#procedure) section and to follow the steps for getting secret key.  
+When you are initially trying out the Sunbird, please request the keys from the EkStep QA environment. For requesting the keys see [Procedure](authtokengenerator_jslibrary.md#procedure) section and to follow the steps for getting secret key.
 
 ## Telemetry Helpers
 
-The following telemetry helpers gives much insights about capturing and collecting the telemetry data. 
+The following telemetry helpers gives much insights about capturing and collecting the telemetry data.
 
 ### Standalone JS Library
 
@@ -35,3 +37,4 @@ The ContentRenderer handles telemetry events for ECML content. HTML content has 
 ### AuthToken Generator JS
 
 The AuthToken generator JS library is used to generate or refresh the user AuthToken. The Authtoken is mandatory for any API request. The AuthToken is passed as part of configuration to the telemetry JS library. [AuthToken Generator JS Library](authtokengenerator_jslibrary.md) details method and process of generating key and tokens.
+

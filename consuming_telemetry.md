@@ -1,14 +1,16 @@
+# consuming\_telemetry
+
 ## Telemetry Exhaust APIs
 
 The Sunbird telemetry services are made available through a daily exhaust, supported by Ekstep infra from multiple channels. It is common that, these channels will not have the data pipeline to process the telemetry data. Hence, telemetry are made available to channels.
 
 Steps involved in consuming Data Exhaust:
 
-1. [Automated] A User need to register using [Register User API](https://github.com/ekstep/Common-Design/wiki/Data-Exhaust-API-Specification#data-exhaust-register-user-api){:target="_blank"}. This API returns a license key, which needs to be used when requesting telemetry data. This creates an entry for the user in ```data_exhaust_users``` table. 
-2. [Manual] Access needs to be granted, manually, to this user to the dataset resource that they want to consume. This access is granted by making an entry, for corresponding user and resource, in ```data_exhaust_users_resources``` table.
-3. [Automated] User can then use [Datasets API](https://github.com/ekstep/Common-Design/wiki/Data-Exhaust-API-Specification#data-exhaust-dataset-api){:target="_blank"} to download telemetry data. User has to pass the license key, got in Step 1, for authentication. Internally, Datasets API will invoke [Authentication API](https://github.com/ekstep/Common-Design/wiki/Data-Exhaust-API-Specification#data-exhaust-authenticate-api){:target="_blank"} and [Authorisation API](https://github.com/ekstep/Common-Design/wiki/Data-Exhaust-API-Specification#data-exhaust-authorize-api){:target="_blank"} to check if the user has is valid and has access to the requested resource, if the checks pass, dataset is returned.
+1. \[Automated\] A User need to register using [Register User API](https://github.com/ekstep/Common-Design/wiki/Data-Exhaust-API-Specification#data-exhaust-register-user-api){:target="\_blank"}. This API returns a license key, which needs to be used when requesting telemetry data. This creates an entry for the user in `data_exhaust_users` table. 
+2. \[Manual\] Access needs to be granted, manually, to this user to the dataset resource that they want to consume. This access is granted by making an entry, for corresponding user and resource, in `data_exhaust_users_resources` table.
+3. \[Automated\] User can then use [Datasets API](https://github.com/ekstep/Common-Design/wiki/Data-Exhaust-API-Specification#data-exhaust-dataset-api){:target="\_blank"} to download telemetry data. User has to pass the license key, got in Step 1, for authentication. Internally, Datasets API will invoke [Authentication API](https://github.com/ekstep/Common-Design/wiki/Data-Exhaust-API-Specification#data-exhaust-authenticate-api){:target="\_blank"} and [Authorisation API](https://github.com/ekstep/Common-Design/wiki/Data-Exhaust-API-Specification#data-exhaust-authorize-api){:target="\_blank"} to check if the user has is valid and has access to the requested resource, if the checks pass, dataset is returned.
 
-```Note```: Database schema of Data Exhaust is described [here](https://github.com/ekstep/Common-Design/wiki/TDD-DataSets#database-schema-changes){:target="_blank"}.
+`Note`: Database schema of Data Exhaust is described [here](https://github.com/ekstep/Common-Design/wiki/TDD-DataSets#database-schema-changes){:target="\_blank"}.
 
 #### Using channel ID and API key to request channel telemetry
 
@@ -18,7 +20,7 @@ This section details **Standard Telemetry Workflows** for different access chann
 
 ### Mobile App Workflow
 
-````
+```text
         START(type: "app")
             ...| --> app events such as IMPRESSION, FEEDBACK, etc may happen
             START(type: "session")
@@ -43,22 +45,22 @@ This section details **Standard Telemetry Workflows** for different access chann
             END(type: "session")
             ...| --> app events such as APP_UPDATE, FEEDBACK, etc may happen
         END(type: "app")
-````
+```
 
 ### Web Portal Workflow
 
-````
+```text
         AUDIT (object: user) --> (Optional if a user is created for the first time)
         START(type: "session") --> User session starts
             ...
             | --> IMPRESSION - For the pages that the user visits
             | --> INTERACT - For the interactions on the page
             // there is no explicit logout/timeout
-````
+```
 
 ### Content Editor Workflow
 
-````
+```text
         START (type: "session") - User logs in
             ...
             | --> IMPRESSION (Portal) - User visits content creation page (cdata session)
@@ -75,11 +77,11 @@ This section details **Standard Telemetry Workflows** for different access chann
                 | --> INTERACT (Editor) - User clicks on submit to review
                 | --> AUDIT (object: Content, state: "Review", prevstate: "Draft") - Platform sends the content to review state
             | --> END (type: "editor", mode: "content") - User closes the editor and goes back to portal
-````
-    
+```
+
 ### Backend-services Workflow
 
-````
+```text
             AUDIT (object: Service, state: "Ready") --> State transition to READY
             ...| --> ACCESS events for API requests
             ACCESS
@@ -87,11 +89,11 @@ This section details **Standard Telemetry Workflows** for different access chann
                 ...
             METRICS --> Health/business metrics (e.g. number of jobs executed)
             AUDIT (object: Service, state: "Stopped") --> State transition to STOPPED
-````
+```
 
 ### DIAL Code Consumption Workflow
 
-````
+```text
             AUDIT (object: Service, state: "Ready") --> State transition to READY
             ...| --> ACCESS events for API requests
             ACCESS
@@ -105,5 +107,5 @@ This section details **Standard Telemetry Workflows** for different access chann
                         ...| --> in-content events such as ASSESS, INTERACT, IMPRESSION, LEVEL_SET etc.
                         ...|
             AUDIT (object: Service, state: "Stopped") --> State transition to STOPPED
+```
 
-````

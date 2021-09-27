@@ -1,21 +1,24 @@
+# specification
+
 ## Telemetry V3 Event Structure
 
-All events follow a common data structure, though the event data structure (“edata”) differs for each event. The  complete data structure is as follows: 
+All events follow a common data structure, though the event data structure \(“edata”\) differs for each event. The complete data structure is as follows:
 
-<pre>
+```text
+
 {
  // About the event
  "eid": , // Required. ID of the event
  "ets": , // Required. Epoch timestamp of event (time in milli-seconds. For ex: 1442816723)
  "ver": , // Required. Version of the event data structure, currently "3.0"
  "mid": , // Required. Unique message ID. Used for deduplication, replay and update indexes
- 
+
  // Who did the event
  "actor": { // Required. Actor of the event.
    "id": , // Required. Id of the actor. For ex: uid incase of an user
    "type":  // Required. User, System etc.
  },
- 
+
  // Context of the event
  "context": { // Required. Context in which the event has occured.
    "channel": , // Required. Channel which has produced the event
@@ -44,62 +47,46 @@ All events follow a common data structure, though the event data structure (“e
    "type": , // Required. Type of the object. For ex: "Content", "Community", "User" etc.
    "ver": , // Optional. version of the object
    "rollup": { // Optional. Rollups to be computed of the object. Only 4 levels are allowed.
-   	"l1": "",
+       "l1": "",
      "l2": "",
      "l3": "",
      "l4": ""
    }
  },
- 
+
  // What is the event data
  "edata": {} // Required.
- 
+
  // Tags
  "tags": [] // Optional. Encrypted dimension tags passed by respective channels
 }
-</pre>
+```
 
 **Note:**
 
 * All events have the same structure with only difference in edata structures.
-* All events have unique event codes i.e., (IDs).
+* All events have unique event codes i.e., \(IDs\).
 * All events are as per platform schema
 
 ## Events Specs
 
-* [Start](v3_event_details.md/#start) - This method initializes capture of telemetric data associated to the start of user action 
-
-* [Impression](v3_event_details.md/#impression) - This method is used to capture telemetry for user visits to  a specific page. 
-
-* [Interact](v3_event_details.md/#interact) - This method is used to capture user interactions on a page. For example, search, click, preview, move, resize, configure
-
-* [Assess ](v3_event_details.md/#access)- This method is used to capture user assessments that happen while playing content.
-
-* [Response](v3_event_details.md/#response) - This method is used to capture user responses. For example; response to a poll, calendar event or a question.
-
-* [Interrupt](v3_event_details.md/#interrupt) - This method is used to capture  interrupts triggered during user activity. For example;  mobile app sent to background, call on the mobile, etc.
-
-* [Feedback](v3_event_details.md/#feedback) - This method is used to capture user feedback
-
-* [Share](v3_event_details.md/#share) - This method is used to capture everything associated with sharing. For example; Share content, telemetry data, link, file etc.
-
-* [Audit](v3_event_details.md/#audit) - This method is used to log telemetry when an object is changed. This includes life-cycle changes as well
-
-* [Error](v3_event_details.md/#error) - This method is used to capture when users face an error
-
-* [Heartbeat](v3_event_details.md/#heartbeat) - This method is used to log telemetry for heartbeat event to denote that the process is running
-
-* [Log](v3_event_details.md/#log) - This method is used to capture generic logging of events.  For example; capturing logs for API calls, service calls, app updates etc.
-
-* [Search](v3_event_details.md/#search) - This method is used to capture the search state i.e. when search is triggered for content, item, assets etc.
-
-* [Metrics](v3_event_details.md/#metrics) - This method is used to log telemetry for service business metrics
-
-* [Summary](v3_event_details.md/#summary) - This method is used to log telemetry summary event
-
-* [Exdata](v3_event_details.md/#exdata) - This method is used as a generic wrapper event to capture encrypted or serialized data
-
-* [End](v3_event_details.md/#end) - This method is used to capture closure after all the activities are completed
+* [Start](v3_event_details.md#start) - This method initializes capture of telemetric data associated to the start of user action
+* [Impression](v3_event_details.md#impression) - This method is used to capture telemetry for user visits to a specific page.
+* [Interact](v3_event_details.md#interact) - This method is used to capture user interactions on a page. For example, search, click, preview, move, resize, configure
+* [Assess ](v3_event_details.md#access)- This method is used to capture user assessments that happen while playing content.
+* [Response](v3_event_details.md#response) - This method is used to capture user responses. For example; response to a poll, calendar event or a question.
+* [Interrupt](v3_event_details.md#interrupt) - This method is used to capture interrupts triggered during user activity. For example; mobile app sent to background, call on the mobile, etc.
+* [Feedback](v3_event_details.md#feedback) - This method is used to capture user feedback
+* [Share](v3_event_details.md#share) - This method is used to capture everything associated with sharing. For example; Share content, telemetry data, link, file etc.
+* [Audit](v3_event_details.md#audit) - This method is used to log telemetry when an object is changed. This includes life-cycle changes as well
+* [Error](v3_event_details.md#error) - This method is used to capture when users face an error
+* [Heartbeat](v3_event_details.md#heartbeat) - This method is used to log telemetry for heartbeat event to denote that the process is running
+* [Log](v3_event_details.md#log) - This method is used to capture generic logging of events. For example; capturing logs for API calls, service calls, app updates etc.
+* [Search](v3_event_details.md#search) - This method is used to capture the search state i.e. when search is triggered for content, item, assets etc.
+* [Metrics](v3_event_details.md#metrics) - This method is used to log telemetry for service business metrics
+* [Summary](v3_event_details.md#summary) - This method is used to log telemetry summary event
+* [Exdata](v3_event_details.md#exdata) - This method is used as a generic wrapper event to capture encrypted or serialized data
+* [End](v3_event_details.md#end) - This method is used to capture closure after all the activities are completed
 
 ### Start
 
@@ -107,7 +94,8 @@ This API is used to log telemetry when users view content or initiate game play
 
 The "edata" structure of Start is as follows:
 
-<pre>
+```text
+
 {
   "edata": {
     "type": "", // Required. app, session, editor, player, workflow, assessment
@@ -119,11 +107,12 @@ The "edata" structure of Start is as follows:
     "pageid": "" // Optional. Page/Stage id where the start has happened.
   }
 }
-</pre>
+```
 
 Example event data:
 
-<pre>
+```text
+
 {
     "actor": {
       "id": "test-user1",
@@ -154,7 +143,7 @@ Example event data:
     "@timestamp": "2018-02-13T05:45:48.588Z",
     "ts": "2018-02-13T05:45:41.582+0000"
   }
-</pre>
+```
 
 ### Impression
 
@@ -162,7 +151,8 @@ This API is used to log telemetry when users visit a specific page.
 
 The "edata" structure of Start is as follows:
 
-<pre>
+```text
+
 {
   "edata": {
     "type": "", // Required. Impression type (list, detail, view, edit, workflow, search)
@@ -172,11 +162,12 @@ The "edata" structure of Start is as follows:
     "visits": [VISIT] // Optional. Capture the object visits
   }
 }
-</pre>
+```
 
 Example event data:
 
-<pre>
+```text
+
 {
     "actor": {
       "id": "test-user1",
@@ -227,14 +218,16 @@ Example event data:
     "@timestamp": "2018-02-13T06:25:32.914Z",
     "ts": "2018-02-13T06:25:28.479+0000"
   }
-</pre>
+```
 
 ### Interact
 
 This API is used to log telemetry of user interactions on the page. For example, search, click, preview, move, resize, configure
 
 The "edata" structure of Start is as follows:
-<pre>
+
+```text
+
 data - Object //Required
 {
   "edata": {
@@ -250,11 +243,12 @@ data - Object //Required
     }
   }
 }
-</pre>
+```
 
 Example event data:
 
-<pre>
+```text
+
 {
     "actor": {
       "id": "test-user1",
@@ -293,7 +287,7 @@ Example event data:
     "@timestamp": "2018-02-13T06:30:33.578Z",
     "ts": "2018-02-13T06:30:41.413+0000"
   }
-</pre>
+```
 
 ### Assess
 
@@ -301,7 +295,8 @@ This API is used to log telemetry of assessments that have occured when the user
 
 The "edata" structure of Start is as follows:
 
-<pre>
+```text
+
 {
   "edata": {
     "item": QUESTION, // Required. Question Data
@@ -312,11 +307,12 @@ The "edata" structure of Start is as follows:
     "duration":  // Required. time taken (decimal number) for this assessment in seconds
   }
 }
-</pre>
+```
 
 Example event data:
 
-<pre>
+```text
+
 {
     "actor": {
       "id": "test-user1",
@@ -367,7 +363,7 @@ Example event data:
     "@timestamp": "2018-02-13T06:37:25.333Z",
     "ts": "2018-02-13T06:37:12.030+0000"
   }
-</pre>
+```
 
 ### Response
 
@@ -375,7 +371,8 @@ This API is used to log telemetry of user response. For example; Responded to as
 
 The "edata" structure of Start is as follows:
 
-<pre>
+```text
+
 {
   "edata": {
     "target": TARGET, // Required. Target of the response
@@ -383,11 +380,12 @@ The "edata" structure of Start is as follows:
     "values": [{"key":"value"}] // Required. Array of response tuples. For ex: if lhs option1 is matched with rhs optionN - [{"lhs":"option1"}, {"rhs":"optionN"}]
   }
 }  
-</pre>
+```
 
 Example event data:
 
-<pre>
+```text
+
 {
     "actor": {
       "id": "test-user1",
@@ -432,7 +430,7 @@ Example event data:
     "@timestamp": "2018-02-13T06:37:01.255Z",
     "ts": "2018-02-13T06:36:49.778+0000"
   }
-</pre>
+```
 
 ### Interrupt
 
@@ -440,18 +438,20 @@ This API is used to log telemetry for any interruptions that have occurred when 
 
 The "edata" structure of Start is as follows:
 
-<pre>
+```text
+
 {
   "edata": {
     "type": "", // Required. [m:background, m:resume]
     "pageid": "" // Optional. Page id where the interrupt has happened
   }
 }
-</pre>
+```
 
 Example event data:
 
-<pre>
+```text
+
 {
     "actor": {
       "id": "test-user",
@@ -485,7 +485,7 @@ Example event data:
     ],
     "ts": "2018-02-13T06:48:55.560+0000"
   }
-</pre>
+```
 
 ### Feedback
 
@@ -493,18 +493,20 @@ This API is used to log telemetry of feedback provided by the user.
 
 The "edata" structure of Start is as follows:
 
-<pre>
+```text
+
 {
   "edata": {
     "rating": 3, // Optional. Numeric score (+1 for like, -1 for dislike, or 4.5 stars given in a rating)
     "comments": "User entered feedback" // Optional. Text feedback (if any)
   }
 }
-</pre>
+```
 
 Example event data:
 
-<pre>
+```text
+
 {
     "actor": {
       "id": "test-user",
@@ -540,7 +542,7 @@ Example event data:
     "@timestamp": "2018-02-12T17:27:27.297Z",
     "ts": "2018-02-12T17:27:16.008+0000"
   }
-</pre>
+```
 
 ### Share
 
@@ -548,7 +550,8 @@ This API is used to log telemetry when a user shares any content with other user
 
 The "edata" structure of Start is as follows:
 
-<pre>
+```text
+
 {
   "edata": {
     "dir": "", // In/Out
@@ -571,11 +574,12 @@ The "edata" structure of Start is as follows:
     }]
   }
 }  
-</pre>
+```
 
 Example event data:
 
-<pre>
+```text
+
 {
     "actor": {
       "id": "test-user1",
@@ -650,7 +654,7 @@ Example event data:
     ],
     "ts": "2018-02-13T07:00:45.934+0000"
   }
-</pre>
+```
 
 ### Audit
 
@@ -658,7 +662,8 @@ This API is used to log telemetry when an object is changed. This includes life-
 
 The "edata" structure of Start is as follows:
 
-<pre>
+```text
+
 data - Object //Required
 {
   "edata": {
@@ -667,11 +672,12 @@ data - Object //Required
     "prevstate": "" // Optional. Previous state
   }
 }
-</pre>
+```
 
 Example event data:
 
-<pre>
+```text
+
 {
     "actor": {
       "id": "",
@@ -711,15 +717,16 @@ Example event data:
     "tags": [],
     "ts": "2018-02-13T07:09:02.782+0000"
   }
-</pre>
+```
 
 ### Error
 
-This API is used to log telemetry of any error that has occurred when a user is viewing content or playing games. 
+This API is used to log telemetry of any error that has occurred when a user is viewing content or playing games.
 
 The "edata" structure of Start is as follows:
 
-<pre>
+```text
+
 {
   "edata": {
     "err": "", // Required. Error code
@@ -730,11 +737,12 @@ The "edata" structure of Start is as follows:
     "plugin": PLUGIN // Optional. Plugin in which the error occured
   }
 }
-</pre>
+```
 
 Example event data:
 
-<pre>
+```text
+
 {
     "actor": {
       "id": "test-user",
@@ -765,7 +773,7 @@ Example event data:
     "@timestamp": "2018-02-13T07:12:10.415Z",
     "ts": "2018-02-13T07:11:50.718+0000"
   }
-</pre>
+```
 
 ### Heartbeat
 
@@ -773,13 +781,14 @@ This API is used to log telemetry for heartbeat event to denote that the process
 
 The "edata" structure of Start is as follows:
 
-<pre>
+```text
+
 data - Object //Required
 {
   "edata": {
   }
 }
-</pre>
+```
 
 ### Log
 
@@ -787,7 +796,8 @@ This API is used to log telemetry of generic log events. For example; API calls,
 
 The "edata" structure of Start is as follows:
 
-<pre>
+```text
+
 {
   "edata": {
     "type": "", // Required. Type of log (system, process, api_access, api_call, job, app_update etc)
@@ -797,11 +807,12 @@ The "edata" structure of Start is as follows:
     "params": [{"key":"value"}] // Optional. Additional params in the log message
   }
 }  
-</pre>
+```
 
 Example event data:
 
-<pre>
+```text
+
 {
     "actor": {
       "id": "test-user1",
@@ -842,15 +853,16 @@ Example event data:
     ],
     "ts": "2018-02-12T18:29:58.146+0000"
   }
-</pre>
+```
 
 ### Search
 
-This API is used to log telemetry when a user triggers a search for any content, item or asset 
+This API is used to log telemetry when a user triggers a search for any content, item or asset
 
 The "edata" structure of Start is as follows:
 
-<pre>
+```text
+
 {
   "edata": {
     "type": "",
@@ -862,11 +874,12 @@ The "edata" structure of Start is as follows:
     "topn": [{}] // Required. top N (configurable) results with their score
   }
 }
-</pre>
+```
 
 Example event data:
 
-<pre>
+```text
+
 {
     "actor": {
       "id": "test-user",
@@ -918,15 +931,16 @@ Example event data:
     "@timestamp": "2018-01-15T07:29:12.553Z",
     "ts": "2018-01-15T07:27:22.930+0000"
   }
-</pre>
+```
 
 ### Metrics
 
-This API is used to log telemetry for service business metrics (also accessible via health API).
+This API is used to log telemetry for service business metrics \(also accessible via health API\).
 
 The "edata" structure of Start is as follows:
 
-<pre>
+```text
+
 data - Object - Required
 {
   "edata": {
@@ -935,7 +949,7 @@ data - Object - Required
     /// more metrics, each is a key value
   }
 }
-</pre>
+```
 
 ### Summary
 
@@ -943,7 +957,8 @@ This API is used to log telemetry summary event
 
 The "edata" structure of Start is as follows:
 
-<pre>
+```text
+
 {
   "edata": {
     "type": "", // Required. Type of summary. Free text. "session", "app", "tool" etc
@@ -975,7 +990,7 @@ The "edata" structure of Start is as follows:
     }]
   }
 }
-</pre>
+```
 
 ### Exdata
 
@@ -983,18 +998,20 @@ This API is used to log telemetry for external data, while playing content
 
 The "edata" structure of Start is as follows:
 
-<pre>
+```text
+
 {
   "edata": {
     "type": "", // Free flowing text. For ex: partnerdata, xapi etc
     "data": "" // Serialized data (can be either encrypted/encoded/stringified)
   }
 }
-</pre>
+```
 
 Example event data:
 
-<pre>
+```text
+
 {
     "actor": {
       "id": "test-user",
@@ -1026,7 +1043,7 @@ Example event data:
     "tags": [],
     "ts": "2018-02-13T07:43:01.930+0000"
   }
-</pre>
+```
 
 ### End
 
@@ -1034,7 +1051,8 @@ This API is used to log telemetry while the user is closing or exiting the conte
 
 The "edata" structure of Start is as follows:
 
-<pre>
+```text
+
 {
   "edata": {
     "type": , // Required. app, session, editor, player, workflow, assessment
@@ -1044,11 +1062,12 @@ The "edata" structure of Start is as follows:
     "summary": [{"key":"value"}] // Optional. Summary of the actions done between start and end. For ex: "progress" for player session, "nodesModified" for collection editor
   }
 }
-</pre>
+```
 
 Example event data:
 
-<pre>
+```text
+
 {
     "actor": {
       "id": "test-user",
@@ -1092,4 +1111,5 @@ Example event data:
     ],
     "ts": "2018-02-13T08:54:53.695+0000"
   }
-</pre>
+```
+

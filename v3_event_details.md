@@ -1,52 +1,38 @@
-## V3 Event Details
+# V3 Event Details
 
-Every API method has an associated event. The following API methods log details of the associated telemetry event. 
+Every API method has an associated event. The following API methods log details of the associated telemetry event.
 
-* [Start](v3_event_details.md/#start) - This method initializes capture of telemetric data associated to the start of user action 
+* [Start](v3_event_details.md#start) - This method initializes capture of telemetric data associated to the start of user action
+* [Impression](v3_event_details.md#impression) - This method is used to capture telemetry for user visits to a specific page.
+* [Interact](v3_event_details.md#interact) - This method is used to capture user interactions on a page. For example, search, click, preview, move, resize, configure
+* [Assess ](v3_event_details.md#access)- This method is used to capture user assessments that happen while playing content.
+* [Response](v3_event_details.md#response) - This method is used to capture user responses. For example; response to a poll, calendar event or a question.
+* [Interrupt](v3_event_details.md#interrupt) - This method is used to capture interrupts triggered during user activity. For example; mobile app sent to background, call on the mobile, etc.
+* [Feedback](v3_event_details.md#feedback) - This method is used to capture user feedback
+* [Share](v3_event_details.md#share) - This method is used to capture everything associated with sharing. For example; Share content, telemetry data, link, file etc.
+* [Audit](v3_event_details.md#audit)
+* [Error](v3_event_details.md#error) - This method is used to capture when users face an error
+* [Heartbeat](v3_event_details.md#heartbeat) -
+* [Log](v3_event_details.md#log) - This method is used to capture generic logging of events. For example; capturing logs for API calls, service calls, app updates etc.
+* [Search](v3_event_details.md#search) - This method is used to capture the search state i.e. when search is triggered for content, item, assets etc.
+* [Metrics](v3_event_details.md#metrics)
+* [Summary](v3_event_details.md#summary)
+* [Exdata](v3_event_details.md#exdata) - This method is used as a generic wrapper event to capture encrypted or serialized data
+* [End](v3_event_details.md#end) - This method is used to capture closure after all the activities are completed
 
-* [Impression](v3_event_details.md/#impression) - This method is used to capture telemetry for user visits to  a specific page. 
+## Start
 
-* [Interact](v3_event_details.md/#interact) - This method is used to capture user interactions on a page. For example, search, click, preview, move, resize, configure
+This API is used to log telemetry when users view content or initiate game play
 
-* [Assess ](v3_event_details.md/#access)- This method is used to capture user assessments that happen while playing content.
+```text
 
-* [Response](v3_event_details.md/#response) - This method is used to capture user responses. For example; response to a poll, calendar event or a question.
-
-* [Interrupt](v3_event_details.md/#interrupt) - This method is used to capture  interrupts triggered during user activity. For example;  mobile app sent to background, call on the mobile, etc.
-
-* [Feedback](v3_event_details.md/#feedback) - This method is used to capture user feedback
-
-* [Share](v3_event_details.md/#share) - This method is used to capture everything associated with sharing. For example; Share content, telemetry data, link, file etc.
-
-* [Audit](v3_event_details.md/#audit)
-
-* [Error](v3_event_details.md/#error) - This method is used to capture when users face an error
-
-* [Heartbeat](v3_event_details.md/#heartbeat) - 
-
-* [Log](v3_event_details.md/#log) - This method is used to capture generic logging of events.  For example; capturing logs for API calls, service calls, app updates etc.
-
-* [Search](v3_event_details.md/#search) - This method is used to capture the search state i.e. when search is triggered for content, item, assets etc.
-
-* [Metrics](v3_event_details.md/#metrics)
-
-* [Summary](v3_event_details.md/#summary)
-
-* [Exdata](v3_event_details.md/#exdata) - This method is used as a generic wrapper event to capture encrypted or serialized data
-
-* [End](v3_event_details.md/#end) - This method is used to capture closure after all the activities are completed
-
-### Start
-
-This API is used to log telemetry when users view content or initiate game play 
-
-<pre>
 start: function(config, contentId, contentVer, data) { }
-</pre>
+```
 
 Request Arguments:
 
-<pre>
+```text
+
 {
   "config": Object, //Config object
   "contentId": String, //Required. Id of the content
@@ -58,19 +44,21 @@ Request Arguments:
     "stageid": "" //Required. stage id where the play has been initiated
   }
 }
-</pre>
+```
 
-### Impression
+## Impression
 
 This API is used to log telemetry when users visit a specific page.
 
-<pre>
+```text
+
 impression: function(data) { }
-</pre>
+```
 
 Request Arguments:
 
-<pre>
+```text
+
 data - Object //Required
 
 {
@@ -86,19 +74,21 @@ data - Object //Required
     "stageto": "" // game level, stage of page id to which the navigation was done
 
 }
-</pre>
+```
 
-### Interact
+## Interact
 
 This API is used to log telemetry of user interactions on the page. For example, search, click, preview, move, resize, configure
 
-<pre>
+```text
+
 interact: function(data) { }
-</pre>
+```
 
 Request Arguments:
 
-<pre>
+```text
+
 data - Object //Required
 {
   "type": "", // Required. Type of interaction TOUCH,DRAG,DROP,PINCH,ZOOM,SHAKE,ROTATE,SPEAK,LISTEN,WRITE,DRAW,START,ENDCHOOSE,ACTIVATE,SHOW,HIDE,SCROLL,HEARTBEAT,OTHER
@@ -112,19 +102,21 @@ data - Object //Required
     "uri": "" // Unique external resource identifier if any (for recorded voice, image, etc.)
   }
 }
-</pre>
+```
 
-### Assess
+## Assess
 
 This API is used to log telemetry of assessments that have occured when the user is viewing content
 
-<pre>
+```text
+
 assess: function(data) { }
-</pre>
+```
 
 Request Arguments:
 
-<pre>
+```text
+
 data - Object //Required
 {
   "item": QUESTION, // Required. Question Data
@@ -147,19 +139,21 @@ QUESTION = {
   "mmc": [], // User defined missing micros concepts
   "mc": []   // micro concepts list
 }
-</pre>
+```
 
-### Response
+## Response
 
 This API is used to log telemetry of user response. For example; Responded to assessments.
 
-<pre>
+```text
+
 response: function(data) { }
-</pre>
+```
 
 Request Arguments:
 
-<pre>
+```text
+
 data  - Object //Required
 {
   "target": TARGET, // Required. Target of the response
@@ -177,59 +171,65 @@ TARGET = {
     "type": "" // Optional. parent type of the object. Required if parentid is present.
   }
 }
-</pre>
+```
 
-### Interrupt
+## Interrupt
 
 This API is used to log telemetry for any interruptions that have occurred when a user is viewing content or playing games. For example; screen lock, incoming call, etc.
 
-<pre>
+```text
+
 interrupt: function(data) { }
-</pre>
+```
 
 Request Arguments:
 
-<pre>
+```text
+
 data - Object //Required
 {
   "type": "", // Required. Type of interuption
   "pageid": "", // Optional. Current Stage/Page unique id on which interuption occured
   "eventid": "" // Optional. unique event ID
 }
-</pre>
+```
 
-### Feedback
+## Feedback
 
 This API is used to log telemetry of feedback provided by the user.
 
-<pre>
+```text
+
 // To log content start/play event
 feedback: function(data) { }
-</pre>
+```
 
 Request Arguments:
 
-<pre>
+```text
+
 data - Object //Required
 {
   "contentId": "", // Required. Id of the content
   "rating": 3, // Optional. Numeric score (+1 for like, -1 for dislike, or 4.5 stars given in a rating)
   "comments": "User entered feedback" // Optional. Text feedback (if any)
 }
-</pre>
+```
 
-### Share
+## Share
 
 This API is used to log telemetry when a user shares any content with other users.
 
-<pre>
+```text
+
 // To log content start/play event
 share: function(data) { }
-</pre>
+```
 
 Request Arguments:
 
-<pre>
+```text
+
 data - Object //Required
 {
   "dir": "", // In/Out
@@ -253,19 +253,21 @@ data - Object //Required
     }
   }]
 }
-</pre>
+```
 
-### Audit
+## Audit
 
 This API is used to log telemetry when an object is changed. This includes life-cycle changes as well.
 
-<pre>
+```text
+
 audit: function(data) { }
-</pre>
+```
 
 Request Arguments:
 
-<pre>
+```text
+
 data - Object //Required
 {
   "edata": {
@@ -274,57 +276,63 @@ data - Object //Required
     "prevstate": "" // Optional. Previous state
   }
 }
-</pre>
+```
 
-### Error
+## Error
 
-This API is used to log telemetry of any error that has occurred when a user is viewing content or playing games. 
+This API is used to log telemetry of any error that has occurred when a user is viewing content or playing games.
 
-<pre>
+```text
+
 error: function(error) { }
-</pre>
+```
 
 Request Arguments:
 
-<pre>
+```text
+
 error - Object //Required
 {
   "err": "", // Required. Error code
   "errtype": "", // Required. Error type classification - "SYSTEM", "MOBILEAPP", "CONTENT"
   "stacktrace": "", // Required. Detailed error data/stack trace
 }
-</pre>
+```
 
-### Heartbeat
+## Heartbeat
 
 This API is used to log telemetry for heartbeat event to denote that the process is running.
 
-<pre>
+```text
+
 heartbeat: function(data) { }
-</pre>
+```
 
 Request Arguments:
 
-<pre>
+```text
+
 data - Object //Required
 {
   {
   "edata": {
   }
 }
-</pre>
+```
 
-### Log
+## Log
 
 This API is used to log telemetry of generic log events. For example; API calls, service calls, app updates, etc.
 
-<pre>
+```text
+
 log: function(data) { }
-</pre>
+```
 
 Request Arguments:
 
-<pre>
+```text
+
 data - Object //Required
 {
   "type": "", // Required. Type of log (system, process, api_access, api_call, job, app_update etc)
@@ -332,19 +340,21 @@ data - Object //Required
   "message": "", // Required. Log message
   "params": [{"key":"value"}] // Optional. Additional params in the log message
 }
-</pre>
+```
 
-### Search
+## Search
 
-This API is used to log telemetry when a user triggers a search for any content, item or asset 
+This API is used to log telemetry when a user triggers a search for any content, item or asset
 
-<pre>
+```text
+
 search: function(data) { }
-</pre>
+```
 
 Request Arguments:
 
-<pre>
+```text
+
 data - Object - Required
 {
   "type": "", // Required. content, assessment, asset 
@@ -355,19 +365,21 @@ data - Object - Required
   "size": 333, // Required. Number of search results
   "topn": [{}] // Required. top N (configurable) results with their score
 }
-</pre>
+```
 
-### Metrics
+## Metrics
 
-This API is used to log telemetry for service business metrics (also accessible via health API).
+This API is used to log telemetry for service business metrics \(also accessible via health API\).
 
-<pre>
+```text
+
 metrics: function(data) { }
-</pre>
+```
 
 Request Arguments:
 
-<pre>
+```text
+
 data - Object - Required
 {
   "edata": {
@@ -376,19 +388,21 @@ data - Object - Required
     /// more metrics, each is a key value
   }
 }
-</pre>
+```
 
-### Summary
+## Summary
 
 This API is used to log telemetry summary event
 
-<pre>
+```text
+
 summary: function(data) { }
-</pre>
+```
 
 Request Arguments:
 
-<pre>
+```text
+
 data - Object - Required
 {
   "edata": {
@@ -421,19 +435,21 @@ data - Object - Required
     }]
   }
 }
-</pre>
+```
 
-### Exdata
+## Exdata
 
 This API is used to log telemetry for external data, while playing content
 
-<pre>
+```text
+
 exdata: function(data) { }
-</pre>
+```
 
 Request Arguments:
 
-<pre>
+```text
+
 data - Object - Required
 
 {
@@ -443,19 +459,21 @@ data - Object - Required
   .... Serialized data (can be either encrypted/encoded/stringified)
 
 }
-</pre>
+```
 
-### End
+## End
 
 This API is used to log telemetry while the user is closing or exiting the content or game
 
-<pre>
+```text
+
 end: function(data) { }
-</pre>
+```
 
 Request Arguments:
 
-<pre>
+```text
+
 data - Object //Required
 {
   "contentId": "", // Required. Id of the content
@@ -464,6 +482,5 @@ data - Object //Required
   "pageid": "", // Optional. Page/Stage id where the end has happened.
   "summary": [{"key":"value"}] // Optional. Summary of the actions done between start and end. For ex: "progress" for player session, "nodesModified" for collection editor
 }
-</pre>
-
+```
 

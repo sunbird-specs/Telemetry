@@ -1,11 +1,16 @@
 # Telemetry
-An open specification for recording and measuring statistical data from real-world use of digital apps &amp; platforms
 
-#### [Overview](overview.md)
-#### [Telemetry Specifications](specification.md)
-#### [Sending Telemetry](sending_telemetry.md)
-#### [Consuming Telemetry](consuming_telemetry.md)
-#### Library References
+An open specification for recording and measuring statistical data from real-world use of digital apps & platforms
+
+## [Overview](overview.md)
+
+## [Telemetry Specifications](specification.md)
+
+## [Sending Telemetry](sending_telemetry.md)
+
+## [Consuming Telemetry](consuming_telemetry.md)
+
+## Library References
 
 * Standalone JS Library
 
@@ -20,7 +25,8 @@ An open specification for recording and measuring statistical data from real-wor
   [HTML Interface Library](html_interface_library.md) details information about the library used to log telemetry events for HTML content.
 
 * AuthToken Generator JS Library
-  
+
   The AuthToken generator JS Library is used to generate or refresh the user AuthToken. The Authtoken is mandatory for any API request.
 
   [AuthToken Generator JS Library](authtokengenerator_jslibrary.md) details method and process of generating key and tokens.
+
