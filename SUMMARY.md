@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Telemetry](README.md)
+* [Telemetry Overview](README.md)
 
 ## LEARN
 
