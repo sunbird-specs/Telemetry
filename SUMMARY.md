@@ -7,7 +7,7 @@
 ---
 
 * [Understanding Telemetry](understand.md)
-* [specification](specification.md)
+* [Specification](specification.md)
 * [V3 Event Details](v3_event_details.md)
 
 ## USE

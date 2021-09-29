@@ -1,4 +1,4 @@
-# specification
+# Specification
 
 ## Telemetry V3 Event Structure
 
