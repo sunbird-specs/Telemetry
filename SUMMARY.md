@@ -6,7 +6,7 @@
 
 ---
 
-* [Understanding Telemetry](overview.md)
+* [Understanding Telemetry](understand.md)
 * [specification](specification.md)
 * [V3 Event Details](v3_event_details.md)
 

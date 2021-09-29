@@ -2,7 +2,7 @@
 
 An open specification for recording and measuring statistical data from real-world use of digital apps & platforms
 
-## [Overview](overview.md)
+## [Understanding Telemetry](understand.md)
 
 ## [Telemetry Specifications](specification.md)
 
