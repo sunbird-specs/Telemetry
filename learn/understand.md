@@ -35,7 +35,7 @@ Typically, there are four levels of telemetry:
 * Enhanced
 * Full
 
-![](.gitbook/assets/telemetry_1.png)
+![](../.gitbook/assets/telemetry_1.png)
 
 The level of data collected is a discrete decision of an organization or business. Analysis of this data offers insights into product and user behaviour and usage patterns, driving business decisions and research outcomes. You can program your telemetry analytics to suit your requirements.
 

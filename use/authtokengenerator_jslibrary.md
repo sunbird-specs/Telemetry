@@ -36,7 +36,7 @@ This section details the procedure to generate the AuthToken and secret key that
 
 ### Process
 
-![](.gitbook/assets/telemetry_service2.png)
+![](../.gitbook/assets/telemetry_service2.png)
 
 ### Prerequisites
 
@@ -61,7 +61,7 @@ This section details the procedure to generate the AuthToken and secret key that
         on visit <a href="https://community.ekstep.in/api-credentials">https://community.ekstep.in/api-credentials</a> instead.</td>
       <td
       style="text-align:left">
-        <img src=".gitbook/assets/telemetry_service3.png" alt/>
+        <img src="../.gitbook/assets/telemetry_service3.png" alt/>
         </td>
     </tr>
     <tr>
@@ -71,7 +71,7 @@ This section details the procedure to generate the AuthToken and secret key that
         <br />3. Click <b>Request API access</b> to request access for available API groups</td>
       <td
       style="text-align:left">
-        <img src=".gitbook/assets/telemetry_service4.png" alt/>
+        <img src="../.gitbook/assets/telemetry_service4.png" alt/>
         </td>
     </tr>
     <tr>
@@ -84,7 +84,7 @@ This section details the procedure to generate the AuthToken and secret key that
           on the portal</p>
       </td>
       <td style="text-align:left">
-        <img src=".gitbook/assets/telemetry_service5.png" alt/>
+        <img src="../.gitbook/assets/telemetry_service5.png" alt/>
       </td>
     </tr>
     <tr>
@@ -96,7 +96,7 @@ This section details the procedure to generate the AuthToken and secret key that
         <br />4. Click <b>Generate credentials</b> to generate key and secret</td>
       <td
       style="text-align:left">
-        <img src=".gitbook/assets/telemetry_service6.png" alt/>
+        <img src="../.gitbook/assets/telemetry_service6.png" alt/>
         </td>
     </tr>
     <tr>
@@ -104,7 +104,7 @@ This section details the procedure to generate the AuthToken and secret key that
         <br />1. Ensure to copy the key and secret and confirm the same
         <br />2. Click <b>Close</b> after copying the Key and Secret</td>
       <td style="text-align:left">
-        <img src=".gitbook/assets/telemetry_service7.png" alt/>
+        <img src="../.gitbook/assets/telemetry_service7.png" alt/>
       </td>
     </tr>
   </tbody>

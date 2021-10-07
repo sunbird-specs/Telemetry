@@ -4,12 +4,13 @@
 
 The current version of the telemetry specification is 3. Version 3 is a complete rewrite of the specification where we have generalized the events in 17 generic event types to be able to capture all possible use-cases and not tied to any specific domain.
 
-### Version 3.1 
+### Version 3.1
 
-The telemetry version has been updated to 3.1 on 06/10/2021 with the addition of new optional attribute `platform` under the `pdata` section of the event envelope/structure. 
+The telemetry version has been updated to 3.1 on 06/10/2021 with the addition of new optional attribute `platform` under the `pdata` section of the event envelope/structure.
 
 The version 3 spec has provision to capture producer information in pdata as follows:
-```js
+
+```javascript
 pdata: {
     "id": "", // unique id assigned to that component. For ex: "sunbird.mobile" in case of a mobile app or "sunbird.desktop" incase of desktop
     "pid": "", // In case the component is distributed, then which instance of that component. For ex: "sunbird.mobile.contentplayer" incase of content player
@@ -18,7 +19,8 @@ pdata: {
 ```
 
 However of late we have observed that there is increasing need to analyze the system/component usage by the underlying OS. For ex: Mobile usage distributed by android vs iOS is one example of it. Desktop usage segregated by Windows vs Ubuntu vs Mac is another example. To be able to support the need to analyze by the underlying platform we have introduced one more attribute `platform` under `pdata` as follows:
-```js
+
+```javascript
 pdata: {
     "id": "", // unique id assigned to that component. For ex: "sunbird.mobile" in case of a mobile app or "sunbird.desktop" incase of desktop
     "pid": "", // In case the component is distributed, then which instance of that component. For ex: "sunbird.mobile.contentplayer" incase of content player
@@ -32,7 +34,6 @@ pdata: {
 All events follow a common data structure, though the event data structure \(“edata”\) differs for each event. The complete data structure is as follows:
 
 ```text
-
 {
  // About the event
  "eid": , // Required. ID of the event
@@ -123,7 +124,6 @@ This API is used to log telemetry when users view content or initiate game play
 The "edata" structure of Start is as follows:
 
 ```text
-
 {
   "edata": {
     "type": "", // Required. app, session, editor, player, workflow, assessment
@@ -140,7 +140,6 @@ The "edata" structure of Start is as follows:
 Example event data:
 
 ```text
-
 {
     "actor": {
       "id": "test-user1",
@@ -180,7 +179,6 @@ This API is used to log telemetry when users visit a specific page.
 The "edata" structure of Start is as follows:
 
 ```text
-
 {
   "edata": {
     "type": "", // Required. Impression type (list, detail, view, edit, workflow, search)
@@ -195,7 +193,6 @@ The "edata" structure of Start is as follows:
 Example event data:
 
 ```text
-
 {
     "actor": {
       "id": "test-user1",
@@ -255,7 +252,6 @@ This API is used to log telemetry of user interactions on the page. For example,
 The "edata" structure of Start is as follows:
 
 ```text
-
 data - Object //Required
 {
   "edata": {
@@ -276,7 +272,6 @@ data - Object //Required
 Example event data:
 
 ```text
-
 {
     "actor": {
       "id": "test-user1",
@@ -324,7 +319,6 @@ This API is used to log telemetry of assessments that have occured when the user
 The "edata" structure of Start is as follows:
 
 ```text
-
 {
   "edata": {
     "item": QUESTION, // Required. Question Data
@@ -340,7 +334,6 @@ The "edata" structure of Start is as follows:
 Example event data:
 
 ```text
-
 {
     "actor": {
       "id": "test-user1",
@@ -400,20 +393,18 @@ This API is used to log telemetry of user response. For example; Responded to as
 The "edata" structure of Start is as follows:
 
 ```text
-
 {
   "edata": {
     "target": TARGET, // Required. Target of the response
     "type": "", // Required. Type of response. CHOOSE, DRAG, SELECT, MATCH, INPUT, SPEAK, WRITE
     "values": [{"key":"value"}] // Required. Array of response tuples. For ex: if lhs option1 is matched with rhs optionN - [{"lhs":"option1"}, {"rhs":"optionN"}]
   }
-}  
+}
 ```
 
 Example event data:
 
 ```text
-
 {
     "actor": {
       "id": "test-user1",
@@ -467,7 +458,6 @@ This API is used to log telemetry for any interruptions that have occurred when 
 The "edata" structure of Start is as follows:
 
 ```text
-
 {
   "edata": {
     "type": "", // Required. [m:background, m:resume]
@@ -479,7 +469,6 @@ The "edata" structure of Start is as follows:
 Example event data:
 
 ```text
-
 {
     "actor": {
       "id": "test-user",
@@ -522,7 +511,6 @@ This API is used to log telemetry of feedback provided by the user.
 The "edata" structure of Start is as follows:
 
 ```text
-
 {
   "edata": {
     "rating": 3, // Optional. Numeric score (+1 for like, -1 for dislike, or 4.5 stars given in a rating)
@@ -534,7 +522,6 @@ The "edata" structure of Start is as follows:
 Example event data:
 
 ```text
-
 {
     "actor": {
       "id": "test-user",
@@ -579,7 +566,6 @@ This API is used to log telemetry when a user shares any content with other user
 The "edata" structure of Start is as follows:
 
 ```text
-
 {
   "edata": {
     "dir": "", // In/Out
@@ -601,13 +587,12 @@ The "edata" structure of Start is as follows:
       }
     }]
   }
-}  
+}
 ```
 
 Example event data:
 
 ```text
-
 {
     "actor": {
       "id": "test-user1",
@@ -691,7 +676,6 @@ This API is used to log telemetry when an object is changed. This includes life-
 The "edata" structure of Start is as follows:
 
 ```text
-
 data - Object //Required
 {
   "edata": {
@@ -705,7 +689,6 @@ data - Object //Required
 Example event data:
 
 ```text
-
 {
     "actor": {
       "id": "",
@@ -754,7 +737,6 @@ This API is used to log telemetry of any error that has occurred when a user is 
 The "edata" structure of Start is as follows:
 
 ```text
-
 {
   "edata": {
     "err": "", // Required. Error code
@@ -770,7 +752,6 @@ The "edata" structure of Start is as follows:
 Example event data:
 
 ```text
-
 {
     "actor": {
       "id": "test-user",
@@ -810,7 +791,6 @@ This API is used to log telemetry for heartbeat event to denote that the process
 The "edata" structure of Start is as follows:
 
 ```text
-
 data - Object //Required
 {
   "edata": {
@@ -825,7 +805,6 @@ This API is used to log telemetry of generic log events. For example; API calls,
 The "edata" structure of Start is as follows:
 
 ```text
-
 {
   "edata": {
     "type": "", // Required. Type of log (system, process, api_access, api_call, job, app_update etc)
@@ -834,13 +813,12 @@ The "edata" structure of Start is as follows:
     "pageid": "", // Optional. Page where the log event has happened
     "params": [{"key":"value"}] // Optional. Additional params in the log message
   }
-}  
+}
 ```
 
 Example event data:
 
 ```text
-
 {
     "actor": {
       "id": "test-user1",
@@ -890,7 +868,6 @@ This API is used to log telemetry when a user triggers a search for any content,
 The "edata" structure of Start is as follows:
 
 ```text
-
 {
   "edata": {
     "type": "",
@@ -907,7 +884,6 @@ The "edata" structure of Start is as follows:
 Example event data:
 
 ```text
-
 {
     "actor": {
       "id": "test-user",
@@ -968,7 +944,6 @@ This API is used to log telemetry for service business metrics \(also accessible
 The "edata" structure of Start is as follows:
 
 ```text
-
 data - Object - Required
 {
   "edata": {
@@ -986,7 +961,6 @@ This API is used to log telemetry summary event
 The "edata" structure of Start is as follows:
 
 ```text
-
 {
   "edata": {
     "type": "", // Required. Type of summary. Free text. "session", "app", "tool" etc
@@ -1027,7 +1001,6 @@ This API is used to log telemetry for external data, while playing content
 The "edata" structure of Start is as follows:
 
 ```text
-
 {
   "edata": {
     "type": "", // Free flowing text. For ex: partnerdata, xapi etc
@@ -1039,7 +1012,6 @@ The "edata" structure of Start is as follows:
 Example event data:
 
 ```text
-
 {
     "actor": {
       "id": "test-user",
@@ -1080,7 +1052,6 @@ This API is used to log telemetry while the user is closing or exiting the conte
 The "edata" structure of Start is as follows:
 
 ```text
-
 {
   "edata": {
     "type": , // Required. app, session, editor, player, workflow, assessment
@@ -1095,7 +1066,6 @@ The "edata" structure of Start is as follows:
 Example event data:
 
 ```text
-
 {
     "actor": {
       "id": "test-user",
