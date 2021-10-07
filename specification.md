@@ -1,5 +1,32 @@
 # Specification
 
+## Version
+
+The current version of the telemetry specification is 3. Version 3 is a complete rewrite of the specification where we have generalized the events in 17 generic event types to be able to capture all possible use-cases and not tied to any specific domain.
+
+### Version 3.1 
+
+The telemetry version has been updated to 3.1 on 06/10/2021 with the addition of new optional attribute `platform` under the `pdata` section of the event envelope/structure. 
+
+The version 3 spec has provision to capture producer information in pdata as follows:
+```js
+pdata: {
+    "id": "", // unique id assigned to that component. For ex: "sunbird.mobile" in case of a mobile app or "sunbird.desktop" incase of desktop
+    "pid": "", // In case the component is distributed, then which instance of that component. For ex: "sunbird.mobile.contentplayer" incase of content player
+    "ver": "" // version number of the build. For ex: "3.9.437"
+}
+```
+
+However of late we have observed that there is increasing need to analyze the system/component usage by the underlying OS. For ex: Mobile usage distributed by android vs iOS is one example of it. Desktop usage segregated by Windows vs Ubuntu vs Mac is another example. To be able to support the need to analyze by the underlying platform we have introduced one more attribute `platform` under `pdata` as follows:
+```js
+pdata: {
+    "id": "", // unique id assigned to that component. For ex: "sunbird.mobile" in case of a mobile app or "sunbird.desktop" incase of desktop
+    "pid": "", // In case the component is distributed, then which instance of that component. For ex: "sunbird.mobile.contentplayer" incase of content player
+    "ver": "", // version number of the build. For ex: "3.9.437"
+    "platform": "" // Underlying OS platform. For ex: "Android/iOS/Windows/Ubuntu/MacOS"
+}
+```
+
 ## Telemetry V3 Event Structure
 
 All events follow a common data structure, though the event data structure \(“edata”\) differs for each event. The complete data structure is as follows:
@@ -10,7 +37,7 @@ All events follow a common data structure, though the event data structure \(“
  // About the event
  "eid": , // Required. ID of the event
  "ets": , // Required. Epoch timestamp of event (time in milli-seconds. For ex: 1442816723)
- "ver": , // Required. Version of the event data structure, currently "3.0"
+ "ver": , // Required. Version of the event data structure, currently "3.1"
  "mid": , // Required. Unique message ID. Used for deduplication, replay and update indexes
 
  // Who did the event
@@ -25,7 +52,8 @@ All events follow a common data structure, though the event data structure \(“
    "pdata": { // Optional. Producer of the event
      "id": , // Required. unique id assigned to that component
      "pid": , // Optional. In case the component is distributed, then which instance of that component
-     "ver":  // Optional. version number of the build
+     "ver": , // Optional. version number of the build
+     "platform": "" // Optional. Underlying OS platform. For ex: "Android/iOS/Windows/Ubuntu/MacOS"
    },
    "env": , // Required. Unique environment where the event has occured.
    "sid": , // Optional. session id of the requestor stamped by portal
